@@ -1,0 +1,230 @@
+body {
+    font-family: 'Times New Roman';
+    margin: 0;
+}
+
+/* header */
+.header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 65px;
+    background: rgb(15, 1, 63);
+}
+
+.logo {
+    display: flex;
+    position: absolute;
+    left: 60px;
+    text-decoration: none;
+}
+
+.logo span {
+    background: url(https://24.media.tumblr.com/tumblr_m87dri70zh1qzla33o1_500.gif);
+    background-size: cover;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.syno {
+    margin-left: 4px;
+    background: linear-gradient(90deg, rgb(99, 138, 245) 0%, rgba(0, 212, 255, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 34px;
+}
+
+/* #loa {
+    position: absolute;
+    left: 380px;
+    width: 35px;
+    height: 35px;
+    scale: 100%;
+}
+
+#loa1 {
+    position: absolute;
+    left: 380px;
+    width: 35px;
+    height: 35px;
+    scale: 100%;
+} */
+
+.NameProject {
+    display: flex;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    font-size: 45px;
+}
+
+#myTime {
+    position: absolute;
+    right: 50px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+/* wrapper */
+.wapper {
+    display: flex;
+    width: 1920px;
+    height: 980px;
+}
+
+#left-wapper {
+    display: flex;
+    width: 1920px;
+    height: 995px;
+    background: rgb(248, 244, 244);
+}
+
+/* footer */
+.footer {
+    position: relative;
+    top: 10px;
+    height: 25px;
+    background: aqua;
+}
+
+@keyframes loader {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 200px;
+    }
+}
+
+.process {
+    position: absolute;
+    left: 196px;
+    font-size: 17px;
+    text-transform: uppercase;
+    top: 2px;
+}
+
+.input-process {
+    position: absolute;
+    height: 15px;
+    border-radius: 5px;
+    top: 4px;
+    left: 314px;
+    animation: loader 7s linear infinite;
+    background: #e2f102;
+    border: none;
+}
+
+.input-process1 {
+    position: absolute;
+    height: 15px;
+    width: 200px;
+    border-radius: 5px;
+    top: 4px;
+    left: 314px;
+    background: #2e90eb;
+    border: none;
+}
+
+.black {
+    background: black;
+    box-shadow: 0px 2px 3px black;
+}
+
+.green {
+    background: rgb(13, 221, 13);
+    box-shadow: 0px 2px 3px green;
+    border: 1px solid #ffffff;
+}
+
+.connect {
+    position: absolute;
+    left: 570px;
+    font-size: 17px;
+    text-transform: uppercase;
+    top: 2px;
+}
+
+#connect {
+    position: absolute;
+    height: 15px;
+    width: 15px;
+    border-radius: 100%;
+    top: 2px;
+    left: 660px;
+    border: none;
+}
+
+/* .mqtt {
+    position: absolute;
+    left: 720px;
+    font-size: 17px;
+    text-transform: uppercase;
+    top: 2px;
+}
+
+#mqtt {
+    position: absolute;
+    height: 17px;
+    width: 17px;
+    border-radius: 100%;
+    top: 2px;
+    left: 780px;
+    border: none;
+}
+
+.SPINKLER {
+    position: absolute;
+    left: 840px;
+    font-size: 17px;
+    text-transform: uppercase;
+    top: 2px;
+}
+
+#SPINKLER {
+    position: absolute;
+    height: 17px;
+    width: 17px;
+    border-radius: 100%;
+    top: 2px;
+    left: 932px;
+    border: none;
+}
+
+.pumpPlc {
+    position: absolute;
+    left: 990px;
+    font-size: 17px;
+    text-transform: uppercase;
+    top: 2px;
+}
+
+#pumpPlc {
+    position: absolute;
+    height: 17px;
+    width: 17px;
+    border-radius: 100%;
+    top: 2px;
+    left: 1032px;
+    border: none;
+} */
+
+.time-data {
+    position: absolute;
+    left: 1200px;
+    font-size: 17px;
+    text-transform: uppercase;
+    top: 2px;
+}
+
+#timedata {
+    position: absolute;
+    width: 500px;
+    top: 3px;
+    right: 30px;
+    border: none;
+    font-size: 15px;
+}
