@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="./img/monitoring.png" type="image/x-icon" />
+        <link rel="stylesheet" href="/styles.css" />
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container">
+            <header class="header">
+                <a href="/" class="logo">
+                    <img src="./svg/list.svg" alt="" class="svg-list" />
+                    <b class="syno">Syno<span style="font-size: 34px">pex</span></b>
+                </a>
+
+                <!-- <img id="loa1" src="img/volume.png" />
+                <img id="loa" src="img/onvolumn.png" />
+
+                <audio id="myAudio" type="audio/mpeg" loop>
+                    <source src="audio/canhbao.mp3" type="audio/mpeg" />
+                </audio> -->
+
+                <span class="NameProject">PCW MONITORING WEB-SYSTEM</span>
+
+                <span id="myTime"></span>
+            </header>
+
+            <section class="wapper">
+                <iframe src="" frameborder="0" id="left-wapper"></iframe>
+            </section>
+
+            <section class="footer">
+                <span class="process">PROCESSING:</span>
+                <input class="input-process" type="text" disabled />
+
+                <span class="connect">CONNECT:</span>
+                <input id="connect" class="black" type="text" disabled />
+<!-- 
+                <span class="mqtt">MQTT:</span>
+                <input id="mqtt" class="black" type="text" disabled />
+
+                <span class="SPINKLER">SPINKLER:</span>
+                <input id="SPINKLER" class="black" type="text" disabled />
+
+                <span class="pumpPlc">PLC:</span>
+                <input id="pumpPlc" class="black" type="text" disabled /> -->
+
+                <span class="time-data">TIME UPDATE DATA:</span>
+                <input id="timedata" type="text" disabled />
+            </section>
+
+        </div>
+
+        <script>
+            setInterval(() => {
+                timer();
+            }, 1);
+
+            const timer = () => {
+                var date = new Date();
+                var month = date.getMonth() + 1;
+                var year = date.getFullYear();
+                var day = date.getDate();
+                var h = date.getHours();
+                var m = date.getMinutes();
+                var s = date.getSeconds();
+                if (h < 10) h = '0' + h;
+                if (m < 10) m = '0' + m;
+                if (s < 10) s = '0' + s;
+                if (day < 10) day = '0' + day;
+                if (month < 10) month = '0' + month;
+                document.getElementById('myTime').innerHTML =
+                    h + ':' + m + ':' + s + '      ' + day + '/' + month + '/' + year;
+            };
+        </script>
+        <script src="./scripts.js"></script>
+    </body>
+</html>
