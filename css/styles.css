@@ -67,24 +67,53 @@ body {
     font-size: 20px;
 }
 
-/* wrapper */
-.wapper {
-    display: flex;
-    width: 1920px;
-    height: 980px;
+/* chart */
+.temp{
+    position: relative;
+    display: inline;
+    left: 420px;
+    background: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
 }
 
+.hum{
+    position: relative;
+    display: inline;
+    left: 1265px;
+    background: white;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.chartBox {
+    position: relative;
+    display: inline-block;
+    width: 959px;
+    height: 180px;
+    background: rgb(255, 255, 255);
+    border-right: 1px solid rgb(0, 0, 0) ;
+}
+
+.chartBox1 {
+    position: absolute;
+    display: inline-block;
+    left: 960px;
+    width: 960px; 
+    height: 180px;
+    background: rgb(255, 255, 255);
+}
+
+/* wrapper */
 #left-wapper {
     display: flex;
     width: 1920px;
-    height: 995px;
+    height: 788px;
     background: rgb(248, 244, 244);
 }
 
 /* footer */
 .footer {
     position: relative;
-    top: 10px;
     height: 25px;
     background: aqua;
 }
@@ -216,7 +245,6 @@ body {
     position: absolute;
     left: 1200px;
     font-size: 17px;
-    text-transform: uppercase;
     top: 2px;
 }
 
@@ -227,4 +255,5 @@ body {
     right: 30px;
     border: none;
     font-size: 15px;
+    font-family: 'Times New Roman', Times, serif;
 }

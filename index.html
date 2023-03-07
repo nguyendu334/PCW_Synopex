@@ -6,7 +6,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="./img/monitoring.png" type="image/x-icon" />
         <link rel="stylesheet" href="./css/styles.css" />
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <title>PCW MONITORING WEB-SYSTEM</title>
     </head>
     <body>
@@ -29,10 +31,22 @@
                 <span id="myTime"></span>
             </header>
 
-            <section class="wapper">
-                <iframe src="" frameborder="0" id="left-wapper"></iframe>
-            </section>
+            <div style="background: rgb(255, 255, 255)">
+                <p class="temp"><b>Biểu đồ mực nước</b></p>
+                <p class="hum"><b>Biểu đồ nhiệt độ nước</b></p>
+            </div>
 
+            <div class="chartBox">
+                <canvas id="myChart" width="960px" height="180px"></canvas>
+            </div>
+
+            <div class="chartBox1">
+                <canvas id="myChart1" width="960px" height="180px"></canvas>
+            </div>
+
+            <section class="wapper">
+                <iframe src="./svg/web.svg" frameborder="0" id="left-wapper"></iframe>
+            </section>
             <section class="footer">
                 <span class="process">PROCESSING:</span>
                 <input class="input-process1" type="text" disabled />
@@ -40,7 +54,7 @@
 
                 <span class="connect">CONNECT:</span>
                 <input id="connect" class="black" type="text" disabled />
-<!-- 
+                <!-- 
                 <span class="mqtt">MQTT:</span>
                 <input id="mqtt" class="black" type="text" disabled />
 
@@ -53,7 +67,6 @@
                 <span class="time-data">TIME UPDATE DATA:</span>
                 <input id="timedata" type="text" disabled />
             </section>
-
         </div>
 
         <script>
@@ -76,8 +89,11 @@
                 if (month < 10) month = '0' + month;
                 document.getElementById('myTime').innerHTML =
                     h + ':' + m + ':' + s + '      ' + day + '/' + month + '/' + year;
+                timedata.value = new Date()
             };
         </script>
         <script src="./scripts/scripts.js"></script>
+        <script src="./scripts/chart.js"></script>
+        
     </body>
 </html>
