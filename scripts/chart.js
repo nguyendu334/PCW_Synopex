@@ -9,9 +9,9 @@ const read = async () => {
         connect.classList.add('green');
         connectAll(response.data);
         readData(response.data);
+        check(response.data);
     } catch {}
 };
-
 
 const connectAll = (db) => {
     const ctx = document.getElementById('myChart');
@@ -46,13 +46,6 @@ const connectAll = (db) => {
     new Chart(ctx, {
         type: 'bar',
         data: data,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                },
-            },
-        },
     });
 
     // Nhiệt độ nước
@@ -76,25 +69,42 @@ const connectAll = (db) => {
     new Chart(ctx1, {
         type: 'bar',
         data: data1,
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                },
-            },
-        },
     });
 };
 
 const readData = (db) => {
-    document.getElementById('left-wapper').getSVGDocument().getElementById("hotpress_level").textContent = Object.values(db.mực_nước.hotpress)[Object.values(db.mực_nước.hotpress).length - 1];
-    document.getElementById('left-wapper').getSVGDocument().getElementById("hotpress_temp").textContent = Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1];
-    // document.getElementById('left-wapper').getSVGDocument().getElementById("chiller4").textContent = Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1];
-    document.getElementById('left-wapper').getSVGDocument().getElementById("wetline_level").textContent = Object.values(db.mực_nước.wetline)[Object.values(db.mực_nước.wetline).length - 1];
-    document.getElementById('left-wapper').getSVGDocument().getElementById("wetline_temp").textContent = Object.values(db.nhiệt_độ.wetline)[Object.values(db.nhiệt_độ.wetline).length - 1];
-    // document.getElementById('left-wapper').getSVGDocument().getElementById("chiller5").textContent = Object.values(db.nhiệt_độ.wetline)[Object.values(db.nhiệt_độ.wetline).length - 1];
+    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_level').textContent =
+        Object.values(db.mực_nước.hotpress)[Object.values(db.mực_nước.hotpress).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_temp').textContent = Object.values(
+        db.nhiệt_độ.hotpress,
+    )[Object.values(db.nhiệt_độ.hotpress).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_level').textContent = Object.values(
+        db.mực_nước.wetline,
+    )[Object.values(db.mực_nước.wetline).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_temp').textContent = Object.values(
+        db.nhiệt_độ.wetline,
+    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller4').textContent = Object.values(
+        db.nhiệt_độ.chiller4,
+    )[Object.values(db.nhiệt_độ.hotpress).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller5').textContent = Object.values(
+        db.nhiệt_độ.chiller5,
+    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller6').textContent = Object.values(
+        db.nhiệt_độ.chiller6,
+    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller7').textContent = Object.values(
+        db.nhiệt_độ.chiller7,
+    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
+};
 
-}
-
-
-
+const check = (db) => {
+    for (var i = 1; i < 10; i++) {
+        if (db) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chill' + i).style.opacity = 0;
+        }
+    }
+};

@@ -1,0 +1,62 @@
+@keyframes animate {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: -800;
+    }
+}
+
+@keyframes animate1 {
+    0% {
+        stroke-dashoffset: 0;
+    }
+    100% {
+        stroke-dashoffset: 800;
+    }
+}
+
+#path15578,
+#path16314,
+#path16308,
+#path15580,
+#path16310,
+#path16316,
+#path16318,
+#path16312,
+#path16320,
+#path16324,
+#path16322,
+#path16326,
+#path9735,
+#path9731,
+#path9725,
+#path9727,
+#path9729,
+#path8993,
+#path8995,
+#path8983,
+#path8987,
+#path8989,
+#path8991,
+#path8973,
+#path8979,
+#path8977,
+#path8981,
+#path8983-9,
+#path8983-9-6,
+#path8983-9-6-8,
+#path8997 {
+    animation: animate 40s linear infinite;
+}
+
+#path16332,
+#path16328,
+#path16330,
+#path8971,
+#path11408,
+#path9737,
+#path9733,
+#path8983-9-5 {
+    animation: animate1 40s linear infinite;
+}
