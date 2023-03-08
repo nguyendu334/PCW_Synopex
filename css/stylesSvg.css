@@ -3,16 +3,7 @@
         stroke-dashoffset: 0;
     }
     100% {
-        stroke-dashoffset: -800;
-    }
-}
-
-@keyframes animate1 {
-    0% {
-        stroke-dashoffset: 0;
-    }
-    100% {
-        stroke-dashoffset: 800;
+        stroke-dashoffset: -1000;
     }
 }
 
@@ -46,10 +37,7 @@
 #path8983-9,
 #path8983-9-6,
 #path8983-9-6-8,
-#path8997 {
-    animation: animate 40s linear infinite;
-}
-
+#path8997,
 #path16332,
 #path16328,
 #path16330,
@@ -58,5 +46,5 @@
 #path9737,
 #path9733,
 #path8983-9-5 {
-    animation: animate1 40s linear infinite;
+    animation: animate 50s linear infinite;
 }
