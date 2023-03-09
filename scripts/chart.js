@@ -107,4 +107,15 @@ const check = (db) => {
                 .getElementById('chill' + i).style.opacity = 0;
         }
     }
+    for (var i = 1; i < 15; i++) {
+        if (db) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('pump' + i).style.opacity = 0;
+        }
+    }
+    if (db) {
+        document.getElementById('left-wapper').getSVGDocument().getElementById('style1190').append('@import url(../css/styleSvg.css)');
+    }
 };
