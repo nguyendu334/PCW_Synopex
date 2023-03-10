@@ -82,5 +82,16 @@
 #path73598,
 #path73604,
 #path73592 {
-    animation: animate 50s linear infinite;
+    animation: animate 70s linear infinite;
 }
+
+@keyframes fanRotate {
+    0% {
+        transform: rotateZ(0deg);
+      }
+      100% {
+        transform: rotateZ(360deg);
+      }
+}
+
+

@@ -54,7 +54,7 @@ const connectAll = (db) => {
         datasets: [
             {
                 label: 'Nhiệt độ Tank Hot Press',
-                borderWidth: 2, // độ dày
+                borderWidth: 1, // độ dày
                 borderColor: 'rgb(255, 99, 132)', // màu line
                 pointRadius: 0, // điển chấm data trên line
                 tension: 0.5, //độ uốn của line
@@ -62,7 +62,7 @@ const connectAll = (db) => {
             },
             {
                 label: 'Nhiệt độ Tank Wet Line',
-                borderWidth: 2, // độ dày
+                borderWidth: 1, // độ dày
                 borderColor: 'rgb(255, 159, 64)', // màu line
                 pointRadius: 0, // điển chấm data trên line
                 tension: 0.5, //độ uốn của line,
@@ -74,7 +74,8 @@ const connectAll = (db) => {
     setInterval(() => {
         data1.datasets[0].data.push({
             x: Date.now(),
-            y: Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1],
+            // y: Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1],
+            y: Math.floor(Math.random() * 20) + 10,
         });
         data1.datasets[1].data.push({
             x: Date.now(),
@@ -163,5 +164,6 @@ const check = (db) => {
             'center';
         document.getElementById('left-wapper').getSVGDocument().getElementById('path801').style.transformBox =
             'fill-box';
+
     }
 };

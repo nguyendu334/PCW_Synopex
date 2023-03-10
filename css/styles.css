@@ -89,9 +89,11 @@ body {
     position: relative;
     display: inline-block;
     width: 959px;
-    height: 180px;
+    height: 179px;
     background: rgb(255, 255, 255);
     border-right: 1px solid rgb(0, 0, 0) ;
+    border-bottom: 1px solid rgb(0, 0, 0) ;
+
 }
 
 .chartBox1 {
@@ -99,8 +101,10 @@ body {
     display: inline-block;
     left: 960px;
     width: 960px; 
-    height: 180px;
+    height: 179px;
     background: rgb(255, 255, 255);
+    border-bottom: 1px solid rgb(0, 0, 0) ;
+
 }
 
 /* wrapper */
