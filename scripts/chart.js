@@ -74,8 +74,7 @@ const connectAll = (db) => {
     setInterval(() => {
         data1.datasets[0].data.push({
             x: Date.now(),
-            // y: Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1],
-            y: Math.floor(Math.random() * 20) + 10,
+            y: Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1],
         });
         data1.datasets[1].data.push({
             x: Date.now(),
@@ -134,36 +133,73 @@ const readData = (db) => {
 };
 
 const check = (db) => {
-    for (var i = 1; i < 10; i++) {
-        if (db) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chill' + i).style.opacity = 0;
-        }
-    }
-    for (var i = 1; i < 15; i++) {
-        if (db) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('pump' + i).style.opacity = 0;
-        }
-    }
+    // for (var i = 1; i < 10; i++) {
+    //     if (db) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chill' + i).style.opacity = 0;
+    //     }
+    // }
     if (db) {
         document
             .getElementById('left-wapper')
             .getSVGDocument()
             .getElementById('style1190')
             .append('@import url(../css/styleSvg.css)');
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path801').style.fill = '#00ff37';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path803').style.fill = '#00ff37';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path801').style.animation =
-            'fanRotate 1s linear infinite';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path801').style.transformOrigin =
-            'center';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path801').style.transformBox =
-            'fill-box';
 
+        // fan chiller
+        for (var i = 1; i < 10; i++) {
+            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64614-9-2').style.fill =
+                '#00ff37';
+            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64616-1-0').style.fill =
+                '#00ff37';
+            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64618-6-8').style.fill =
+                '#00ff37';
+            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64650-9-8').style.fill =
+                '#00ff37';
+            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64622-9-8').style.fill =
+                '#00ff37';
+
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('path80' + i).style.fill = '#00ff37';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('path80' + i).style.animation = 'fanRotate 0.7s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('path80' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('path80' + i).style.transformBox = 'fill-box';
+        }
+
+        //pump
+        for (var i = 1; i < 15; i++) {
+            if(db.pump[i] == 1) {
+                document.getElementById('left-wapper').getSVGDocument().getElementById('pump_' + i).style.opacity = '0';
+                document
+                    .getElementById('left-wapper')
+                    .getSVGDocument()
+                    .getElementById('pump' + i).style.fill = '#00ff37';
+                document
+                    .getElementById('left-wapper')
+                    .getSVGDocument()
+                    .getElementById('pump' + i).style.animation = 'fanRotate 1s linear infinite';
+                document
+                    .getElementById('left-wapper')
+                    .getSVGDocument()
+                    .getElementById('pump' + i).style.transformOrigin = 'center';
+                document
+                    .getElementById('left-wapper')
+                    .getSVGDocument()
+                    .getElementById('pump' + i).style.transformBox = 'fill-box';
+            }
+        }
     }
 };

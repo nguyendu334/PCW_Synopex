@@ -1,4 +1,4 @@
-@keyframes animate {
+/* @keyframes animate {
     0% {
         stroke-dashoffset: 0;
     }
@@ -83,7 +83,7 @@
 #path73604,
 #path73592 {
     animation: animate 70s linear infinite;
-}
+} */
 
 @keyframes fanRotate {
     0% {
@@ -93,5 +93,8 @@
         transform: rotateZ(360deg);
       }
 }
+
+
+
 
 
