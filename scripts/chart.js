@@ -31,12 +31,12 @@ const connectAll = (db) => {
         labels: labels,
         datasets: [
             {
-                label: 'Mực nước Tank Hot Press',
+                label: 'Tank Hot Press',
                 data: db.mực_nước.hotpress,
                 backgroundColor: 'rgba(255, 99, 132)',
             },
             {
-                label: 'Mực nước Tank Wet Line',
+                label: 'Tank Wet Line',
                 data: db.mực_nước.wetline,
                 backgroundColor: 'rgba(255, 159, 64)',
             },
@@ -53,7 +53,7 @@ const connectAll = (db) => {
     const data1 = {
         datasets: [
             {
-                label: 'Nhiệt độ Tank Hot Press',
+                label: 'Tank Hot Press',
                 borderWidth: 1, // độ dày
                 borderColor: 'rgb(255, 99, 132)', // màu line
                 pointRadius: 0, // điển chấm data trên line
@@ -61,13 +61,45 @@ const connectAll = (db) => {
                 backgroundColor: 'rgb(255, 99, 132)',
             },
             {
-                label: 'Nhiệt độ Tank Wet Line',
+                label: 'Tank Wet Line',
                 borderWidth: 1, // độ dày
                 borderColor: 'rgb(255, 159, 64)', // màu line
                 pointRadius: 0, // điển chấm data trên line
                 tension: 0.5, //độ uốn của line,
                 backgroundColor: 'rgb(255, 159, 64)',
             },
+            {
+                label: 'Hotpress Machine 1',
+                borderWidth: 1, // độ dày
+                borderColor: 'rgb(255, 205, 86)', // màu line
+                pointRadius: 0, // điển chấm data trên line
+                tension: 0.5, //độ uốn của line,
+                backgroundColor: 'rgb(255, 205, 86)',
+            },
+            {
+                label: 'Hotpress Machine 2',
+                borderWidth: 1, // độ dày
+                borderColor: 'rgb(75, 192, 192)', // màu line
+                pointRadius: 0, // điển chấm data trên line
+                tension: 0.5, //độ uốn của line,
+                backgroundColor: 'rgb(75, 192, 192)',
+            },
+            {
+                label: 'Copper Line 1',
+                borderWidth: 1, // độ dày
+                borderColor: 'rgb(54, 162, 235)', // màu line
+                pointRadius: 0, // điển chấm data trên line
+                tension: 0.5, //độ uốn của line,
+                backgroundColor: 'rgb(54, 162, 235)',
+            },
+            {
+                label: 'Copper Line 2',
+                borderWidth: 1, // độ dày
+                borderColor: 'rgb(153, 102, 255)', // màu line
+                pointRadius: 0, // điển chấm data trên line
+                tension: 0.5, //độ uốn của line,
+                backgroundColor: 'rgb(153, 102, 255)',
+            }
         ],
     };
 
@@ -79,6 +111,22 @@ const connectAll = (db) => {
         data1.datasets[1].data.push({
             x: Date.now(),
             y: Object.values(db.nhiệt_độ.wetline)[Object.values(db.nhiệt_độ.wetline).length - 1],
+        });
+        data1.datasets[2].data.push({
+            x: Date.now(),
+            y: db.nhiệt_độ.nước_về.hotpress_machine_1,
+        });
+        data1.datasets[3].data.push({
+            x: Date.now(),
+            y: db.nhiệt_độ.nước_về.hotpress_machine_2,
+        });
+        data1.datasets[4].data.push({
+            x: Date.now(),
+            y: db.nhiệt_độ.nước_về.copper_line_1,
+        });
+        data1.datasets[5].data.push({
+            x: Date.now(),
+            y: db.nhiệt_độ.nước_về.copper_line_2,
         });
     }, 1000);
 
