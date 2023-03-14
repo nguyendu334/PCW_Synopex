@@ -5,11 +5,13 @@ setInterval(() => {
 var connect = document.getElementById('connect');
 const read = async () => {
     try {
-        const response = await axios.get('./data.json');
+        const response = await axios.get('data.json');
         connect.classList.add('green');
         connectAll(response.data);
         readData(response.data);
-        check(response.data);
+        addCss(response.data);
+        checkPump(response.data);
+        checkChiller(response.data);
     } catch {}
 };
 
@@ -99,7 +101,7 @@ const connectAll = (db) => {
                 pointRadius: 0, // điển chấm data trên line
                 tension: 0.5, //độ uốn của line,
                 backgroundColor: 'rgb(153, 102, 255)',
-            }
+            },
         ],
     };
 
@@ -128,7 +130,8 @@ const connectAll = (db) => {
             x: Date.now(),
             y: db.nhiệt_độ.nước_về.copper_line_2,
         });
-    }, 1000);
+    }, 100);
+    
 
     new Chart(ctx1, {
         type: 'line',
@@ -152,9 +155,11 @@ const connectAll = (db) => {
             },
         },
     });
+    
 };
 
 const readData = (db) => {
+
     document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_level').textContent =
         Object.values(db.mực_nước.hotpress)[Object.values(db.mực_nước.hotpress).length - 1].toFixed(1);
     document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_temp').textContent = Object.values(
@@ -178,9 +183,23 @@ const readData = (db) => {
     document.getElementById('left-wapper').getSVGDocument().getElementById('chiller7').textContent = Object.values(
         db.nhiệt_độ.chiller7,
     )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_machine1').textContent = db.nhiệt_độ.nước_về.hotpress_machine_1.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_machine2').textContent = db.nhiệt_độ.nước_về.hotpress_machine_2.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('copper_line1').textContent = db.nhiệt_độ.nước_về.copper_line_1.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('copper_line2').textContent = db.nhiệt_độ.nước_về.copper_line_2.toFixed(1);
 };
 
-const check = (db) => {
+const addCss = (db) => {
+    if (db) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('style1190')
+            .append('@import url(../css/styleSvg.css)');
+    }
+};
+
+const checkPump = (db) => {
     // for (var i = 1; i < 10; i++) {
     //     if (db) {
     //         document
@@ -189,65 +208,56 @@ const check = (db) => {
     //             .getElementById('chill' + i).style.opacity = 0;
     //     }
     // }
-    if (db) {
+    for (var i = 1; i < 15; i++) {
+        if (db.pump[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('pump_' + i).style.opacity = '0';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('pump' + i).style.fill = '#00ff37';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('pump' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('pump' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('pump' + i).style.transformBox = 'fill-box';
+        }
+    }
+};
+
+// check chiller
+const checkChiller = (db) => {
+    for (var i = 1; i < 10; i++) {
+        // document.getElementById('left-wapper').getSVGDocument().getElementById('rect64614-9-2').style.fill = '#00ff37';
+        // document.getElementById('left-wapper').getSVGDocument().getElementById('rect64616-1-0').style.fill = '#00ff37';
+        // document.getElementById('left-wapper').getSVGDocument().getElementById('rect64618-6-8').style.fill = '#00ff37';
+        // document.getElementById('left-wapper').getSVGDocument().getElementById('rect64650-9-8').style.fill = '#00ff37';
+        // document.getElementById('left-wapper').getSVGDocument().getElementById('rect64622-9-8').style.fill = '#00ff37';
+
         document
             .getElementById('left-wapper')
             .getSVGDocument()
-            .getElementById('style1190')
-            .append('@import url(../css/styleSvg.css)');
-
-        // fan chiller
-        for (var i = 1; i < 10; i++) {
-            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64614-9-2').style.fill =
-                '#00ff37';
-            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64616-1-0').style.fill =
-                '#00ff37';
-            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64618-6-8').style.fill =
-                '#00ff37';
-            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64650-9-8').style.fill =
-                '#00ff37';
-            document.getElementById('left-wapper').getSVGDocument().getElementById('rect64622-9-8').style.fill =
-                '#00ff37';
-
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('path80' + i).style.fill = '#00ff37';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('path80' + i).style.animation = 'fanRotate 0.7s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('path80' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('path80' + i).style.transformBox = 'fill-box';
-        }
-
-        //pump
-        for (var i = 1; i < 15; i++) {
-            if(db.pump[i] == 1) {
-                document.getElementById('left-wapper').getSVGDocument().getElementById('pump_' + i).style.opacity = '0';
-                document
-                    .getElementById('left-wapper')
-                    .getSVGDocument()
-                    .getElementById('pump' + i).style.fill = '#00ff37';
-                document
-                    .getElementById('left-wapper')
-                    .getSVGDocument()
-                    .getElementById('pump' + i).style.animation = 'fanRotate 1s linear infinite';
-                document
-                    .getElementById('left-wapper')
-                    .getSVGDocument()
-                    .getElementById('pump' + i).style.transformOrigin = 'center';
-                document
-                    .getElementById('left-wapper')
-                    .getSVGDocument()
-                    .getElementById('pump' + i).style.transformBox = 'fill-box';
-            }
-        }
+            .getElementById('path80' + i).style.fill = '#00ff37';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('path80' + i).style.animation = 'fanRotate 0.7s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('path80' + i).style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('path80' + i).style.transformBox = 'fill-box';
     }
 };
