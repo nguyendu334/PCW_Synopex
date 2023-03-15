@@ -17,17 +17,10 @@
     <body>
         <div class="container">
             <header class="header">
-                <a href="/index2.html" class="logo">
+                <a href="" class="logo">
                     <img src="./svg/list.svg" alt="" />
                     <b class="syno">SYNO<span>PEX</span></b>
                 </a>
-
-                <!-- <img id="loa1" src="img/volume.png" />
-                <img id="loa" src="img/onvolumn.png" />
-
-                <audio id="myAudio" type="audio/mpeg" loop>
-                    <source src="audio/canhbao.mp3" type="audio/mpeg" />
-                </audio> -->
 
                 <span class="NameProject">PCW MONITORING WEB-SYSTEM</span>
 
@@ -35,8 +28,7 @@
             </header>
 
             <div style="background: rgb(255, 255, 255)">
-                <p class="temp"><b>Biểu đồ mực nước</b></p>
-                <p class="hum"><b>Biểu đồ nhiệt độ nước</b></p>
+                <p class="temp"><b>Đơn vị: ℃</b></p>
             </div>
 
             <div class="chartBox">
@@ -48,7 +40,7 @@
             </div>
 
             <section class="wapper">
-                <iframe src="./svg/demo2.svg" frameborder="0" id="left-wapper"></iframe>
+                <iframe src="./svg/rect12.svg" frameborder="0" id="left-wapper"></iframe>
             </section>
             <section class="footer">
                 <span class="process">PROCESSING:</span>
@@ -92,11 +84,10 @@
                 if (month < 10) month = '0' + month;
                 document.getElementById('myTime').innerHTML =
                     h + ':' + m + ':' + s + '      ' + day + '/' + month + '/' + year;
-                timedata.value = new Date()
+                timedata.value = new Date();
             };
         </script>
         <script src="./scripts/scripts.js"></script>
         <script src="./scripts/chart.js"></script>
-        
     </body>
 </html>
