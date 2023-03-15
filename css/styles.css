@@ -71,19 +71,19 @@ body {
 .temp{
     position: relative;
     display: inline;
-    left: 420px;
+    left: 20px;
     background: white;
     font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
 }
 
-.hum{
+/* .hum{
     position: relative;
     display: inline;
     left: 1265px;
     background: white;
     font-family: 'Times New Roman', Times, serif;
-}
+} */
 
 .chartBox {
     position: relative;
