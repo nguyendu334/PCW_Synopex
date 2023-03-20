@@ -68,7 +68,7 @@ body {
 }
 
 /* chart */
-.temp{
+.temp {
     position: relative;
     display: inline;
     left: 20px;
@@ -77,34 +77,24 @@ body {
     font-size: 14px;
 }
 
-/* .hum{
-    position: relative;
-    display: inline;
-    left: 1265px;
-    background: white;
-    font-family: 'Times New Roman', Times, serif;
-} */
-
 .chartBox {
     position: relative;
     display: inline-block;
     width: 959px;
     height: 179px;
     background: rgb(255, 255, 255);
-    border-right: 1px solid rgb(0, 0, 0) ;
-    border-bottom: 1px solid rgb(0, 0, 0) ;
-
+    border-right: 1px solid rgb(0, 0, 0);
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 .chartBox1 {
     position: absolute;
     display: inline-block;
     left: 960px;
-    width: 960px; 
+    width: 960px;
     height: 179px;
     background: rgb(255, 255, 255);
-    border-bottom: 1px solid rgb(0, 0, 0) ;
-
+    border-bottom: 1px solid rgb(0, 0, 0);
 }
 
 /* wrapper */
@@ -170,14 +160,12 @@ body {
 .green {
     background: rgb(13, 221, 13);
     box-shadow: 0px 2px 3px green;
-    border: 1px solid #ffffff;
 }
 
 .connect {
     position: absolute;
     left: 570px;
     font-size: 17px;
-    text-transform: uppercase;
     top: 2px;
 }
 
@@ -255,9 +243,9 @@ body {
 #timedata {
     position: absolute;
     width: 500px;
-    top: 3px;
-    right: 30px;
+    top: 2px;
+    left: 1370px;
     border: none;
-    font-size: 15px;
+    font-size: 16px;
     font-family: 'Times New Roman', Times, serif;
 }

@@ -5,7 +5,7 @@ setInterval(() => {
 var connect = document.getElementById('connect');
 const read = async () => {
     try {
-        const response = await axios.get('http://localhost:3000/db');
+        const response = await axios.get('data.json');
         connect.classList.add('green');
         connectAll(response.data);
         readData(response.data);
@@ -82,11 +82,11 @@ const connectAll = (db) => {
     setInterval(() => {
         data.datasets[0].data.push({
             x: Date.now(),
-            y: Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1],
+            y: db.nhiệt_độ.hotpress,
         });
         data1.datasets[0].data.push({
             x: Date.now(),
-            y: Object.values(db.nhiệt_độ.wetline)[Object.values(db.nhiệt_độ.wetline).length - 1],
+            y: db.nhiệt_độ.wetline,
         });
     }, 100);
 
@@ -116,28 +116,21 @@ const connectAll = (db) => {
 
 const readData = (db) => {
     document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_level').textContent =
-        Object.values(db.mực_nước.hotpress)[Object.values(db.mực_nước.hotpress).length - 1].toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_temp').textContent = Object.values(
-        db.nhiệt_độ.hotpress,
-    )[Object.values(db.nhiệt_độ.hotpress).length - 1].toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_level').textContent = Object.values(
-        db.mực_nước.wetline,
-    )[Object.values(db.mực_nước.wetline).length - 1].toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_temp').textContent = Object.values(
-        db.nhiệt_độ.wetline,
-    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller4').textContent = Object.values(
-        db.nhiệt_độ.chiller4,
-    )[Object.values(db.nhiệt_độ.hotpress).length - 1].toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller5').textContent = Object.values(
-        db.nhiệt_độ.chiller5,
-    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller6').textContent = Object.values(
-        db.nhiệt_độ.chiller6,
-    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller7').textContent = Object.values(
-        db.nhiệt_độ.chiller7,
-    )[Object.values(db.nhiệt_độ.wetline).length - 1].toFixed(1);
+        db.mực_nước.hotpress.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_temp').textContent =
+        db.nhiệt_độ.hotpress.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_level').textContent =
+        db.mực_nước.wetline.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_temp').textContent =
+        db.nhiệt_độ.wetline.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller4').textContent =
+        db.nhiệt_độ.chiller4.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller5').textContent =
+        db.nhiệt_độ.chiller5.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller6').textContent =
+        db.nhiệt_độ.chiller6.toFixed(1);
+    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller7').textContent =
+        db.nhiệt_độ.chiller7.toFixed(1);
     document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_machine1').textContent =
         db.nhiệt_độ.nước_về.hotpress_machine_1.toFixed(1);
     document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_machine2').textContent =
@@ -170,10 +163,6 @@ const readData = (db) => {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path30535').style.animation =
             'animate 70s linear infinite';
         document.getElementById('left-wapper').getSVGDocument().getElementById('wetline').style.opacity = 0;
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path30134').style.animation = '';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path30535').style.animation = '';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('wetline').style.opacity = 1;
     }
 
     // check pump
@@ -199,6 +188,10 @@ const readData = (db) => {
                 .getElementById('left-wapper')
                 .getSVGDocument()
                 .getElementById('pump' + i).style.transformBox = 'fill-box';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('path' + i).style.animation = ' animate 70s linear infinite';
         } else {
             document
                 .getElementById('left-wapper')
@@ -223,94 +216,8 @@ const readData = (db) => {
         }
     }
 
-    if (db.pump[1] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path64670').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path64670').style.animation = '';
-    }
-
-    if (db.pump[2] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path64672').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path64672').style.animation = '';
-    }
-    if (db.pump[3] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path66510').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path66510').style.animation = '';
-    }
-    if (db.pump[4] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path66495').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path66495').style.animation = '';
-    }
-    if (db.pump[5] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path61410').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path61410').style.animation = '';
-    }
-    if (db.pump[6] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path61412').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path61412').style.animation = '';
-    }
-    if (db.pump[7] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113136').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113136').style.animation = '';
-    }
-    if (db.pump[8] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113138').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113138').style.animation = '';
-    }
-    if (db.pump[9] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113662').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113662').style.animation = '';
-    }
-    if (db.pump[10] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113664').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113664').style.animation = '';
-    }
-    if (db.pump[11] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path86961').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path86961').style.animation = '';
-    }
-    if (db.pump[12] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path86959').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path86959').style.animation = '';
-    }
-    if (db.pump[13] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113794').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113794').style.animation = '';
-    }
-    if (db.pump[14] === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113796').style.animation =
-            ' animate 70s linear infinite';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113796').style.animation = '';
-    }
-
     // check chiller
-    // chiller4
+        // chiller4
     for (var i = 1; i < 3; i++) {
         if (db.chill.chill4.comp[i] === 1) {
             document
@@ -341,7 +248,7 @@ const readData = (db) => {
         }
     }
 
-    // chiller5
+        // chiller5
     for (var i = 1; i < 3; i++) {
         if (db.chill.chill5.comp[i] === 1) {
             document
@@ -372,7 +279,7 @@ const readData = (db) => {
         }
     }
 
-    // chiller6
+        // chiller6
     for (var i = 1; i < 4; i++) {
         if (db.chill.chill6.comp[i] === 1) {
             document
@@ -403,7 +310,7 @@ const readData = (db) => {
         }
     }
 
-    // chiller7
+        // chiller7
     for (var i = 1; i < 3; i++) {
         if (db.chill.chill7.comp[i] === 1) {
             document
@@ -435,7 +342,7 @@ const readData = (db) => {
     }
 
     // check fan
-    // chiller4
+        // chiller4
     for (var i = 1; i < 5; i++) {
         if (db.chill.chill4.fan[i] === 1) {
             document
@@ -450,7 +357,7 @@ const readData = (db) => {
         }
     }
 
-    // chiller5
+        // chiller5
     for (var i = 1; i < 5; i++) {
         if (db.chill.chill5.fan[i] === 1) {
             document
@@ -465,7 +372,7 @@ const readData = (db) => {
         }
     }
 
-    // chiller6
+            // chiller6
     for (var i = 1; i < 7; i++) {
         if (db.chill.chill6.fan[i] === 1) {
             document
@@ -480,7 +387,7 @@ const readData = (db) => {
         }
     }
 
-    // chiller7
+        // chiller7
     for (var i = 1; i < 5; i++) {
         if (db.chill.chill7.fan[i] === 1) {
             document
@@ -497,88 +404,70 @@ const readData = (db) => {
     }
 
     // check spec
-    // wetline
-    if (
-        Object.values(db.nhiệt_độ.wetline)[Object.values(db.nhiệt_độ.wetline).length - 1] > 23 ||
-        Object.values(db.nhiệt_độ.wetline)[Object.values(db.nhiệt_độ.wetline).length - 1] < 20
-    ) {
+        // wetline
+    if (db.nhiệt_độ.wetline > 23 || db.nhiệt_độ.wetline < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path57659').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path57659').style.fill = '';
     }
 
-    // hotpress
-    if (
-        Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1] > 23 ||
-        Object.values(db.nhiệt_độ.hotpress)[Object.values(db.nhiệt_độ.hotpress).length - 1] < 20
-    ) {
+        // hotpress
+    if (db.nhiệt_độ.hotpress > 23 || db.nhiệt_độ.hotpress < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path16430').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path16430').style.fill = '';
     }
 
-    // chiller4
-    if (
-        Object.values(db.nhiệt_độ.chiller4)[Object.values(db.nhiệt_độ.chiller4).length - 1] > 23 ||
-        Object.values(db.nhiệt_độ.chiller4)[Object.values(db.nhiệt_độ.chiller4).length - 1] < 20
-    ) {
+        // chiller4
+    if (db.nhiệt_độ.chiller4 > 23 || db.nhiệt_độ.chiller4 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path22063-4').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path22063-4').style.fill = '';
     }
 
-    // chiller5
-    if (
-        Object.values(db.nhiệt_độ.chiller5)[Object.values(db.nhiệt_độ.chiller5).length - 1] > 23 ||
-        Object.values(db.nhiệt_độ.chiller5)[Object.values(db.nhiệt_độ.chiller5).length - 1] < 20
-    ) {
+        // chiller5
+    if (db.nhiệt_độ.chiller5 > 23 || db.nhiệt_độ.chiller5 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path106790').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path106790').style.fill = '';
     }
 
-    // chiller6
-    if (
-        Object.values(db.nhiệt_độ.chiller6)[Object.values(db.nhiệt_độ.chiller6).length - 1] > 23 ||
-        Object.values(db.nhiệt_độ.chiller6)[Object.values(db.nhiệt_độ.chiller6).length - 1] < 20
-    ) {
+        // chiller6
+    if (db.nhiệt_độ.chiller6 > 23 || db.nhiệt_độ.chiller6 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path113180').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path113180').style.fill = '';
     }
 
-    // chiller7
-    if (
-        Object.values(db.nhiệt_độ.chiller7)[Object.values(db.nhiệt_độ.chiller7).length - 1] > 23 ||
-        Object.values(db.nhiệt_độ.chiller7)[Object.values(db.nhiệt_độ.chiller7).length - 1] < 20
-    ) {
+        // chiller7
+    if (db.nhiệt_độ.chiller7 > 23 || db.nhiệt_độ.chiller7 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path113418').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path113418').style.fill = '';
     }
 
-    // hotpress machine 1
+        // hotpress machine 1
     if (db.nhiệt_độ.nước_về.hotpress_machine_1 > 23 || db.nhiệt_độ.nước_về.hotpress_machine_1 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path106790-1').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('path106790-1').style.fill = '';
     }
 
-    // hotpress machine 2
+        // hotpress machine 2
     if (db.nhiệt_độ.nước_về.hotpress_machine_2 > 23 || db.nhiệt_độ.nước_về.hotpress_machine_2 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('rect43688').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('rect43688').style.fill = '';
     }
 
-    // copper line 1
+        // copper line 1
     if (db.nhiệt_độ.nước_về.copper_line_1 > 23 || db.nhiệt_độ.nước_về.copper_line_1 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('rect313556').style.fill = '#d40000';
     } else {
         document.getElementById('left-wapper').getSVGDocument().getElementById('rect313556').style.fill = '';
     }
 
-    // copper line 2
+        // copper line 2
     if (db.nhiệt_độ.nước_về.copper_line_2 > 23 || db.nhiệt_độ.nước_về.copper_line_2 < 20) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('rect119697').style.fill = '#d40000';
     } else {
