@@ -1,177 +1,106 @@
-setInterval(() => {
-    read();
-}, 1000);
+var url = 'http://10.100.203.78:3011/data/1';
+var db;
 
-var connect = document.getElementById('connect');
-const read = async () => {
-    try {
-        const response = await axios.get('data.json');
-        connect.classList.add('green');
-        connectAll(response.data);
-        readData(response.data);
-    } catch (error) {
-        console.log(error);
+var MQTT_CLIENT_ID = 'iot_web_temp' + Math.floor((1 + Math.random()) * 0x10000000000).toString(16);
+var reconnect = false;
+// Create a MQTT client instance
+var MQTT_CLIENT = new Paho.MQTT.Client('broker.hivemq.com', 8000, MQTT_CLIENT_ID);
+
+// Tell the client instance to connect to the MQTT broker
+MQTT_CLIENT.connect({ onSuccess: myClientConnected });
+// Tell MQTT_CLIENT to call myMessageArrived(message) each time a new message arrives
+
+MQTT_CLIENT.onMessageArrived = myMessageArrived;
+// set callback handlers
+MQTT_CLIENT.onConnectionLost = onConnectionLost;
+
+var mqtt_isconnected = false;
+
+// This is the function which handles subscribing to topics after a connection is made
+function myClientConnected() {
+    MQTT_CLIENT.subscribe('SYNOPEXVINA2/IIOT/MQTT/PWC');
+    mqtt_isconnected = true;
+}
+
+// called when the client loses its connection
+function onConnectionLost(responseObject) {
+    if (responseObject.errorCode !== 0) {
+        // console.log("onConnectionLost:"+responseObject.errorMessage);
+        mqtt_isconnected = false;
     }
-};
+}
 
-const connectAll = (db) => {
-    var dt = new Date();
-    var month = dt.getMonth() + 1;
-    var year = dt.getFullYear();
+// This is the function which handles received messages
+function myMessageArrived(message) {
+    db = JSON.parse(message.payloadString);
+}
 
-    var daysInMonth = new Date(year, month, 0).getDate();
-    const labels = [];
+// setInterval(() => {
+//     read();
+// }, 1000);
 
-    for (let i = 1; i <= daysInMonth; ++i) {
-        labels.push(i.toString());
-    }
+// var connect = document.getElementById('connect');
+// const read = async () => {
+//     try {
+//         const response = await axios.get('data.json');
+//         connect.classList.add('green');
+//         db = response.data;
+//     } catch (error) {
+//         console.log(error);
+//     }
+// };
 
-    // Mực nước
-    const ctx = document.getElementById('myChart');
-    const data = {
-        labels: labels,
-        datasets: [
-            {
-                label: 'Nhiệt độ Hot Press Tanker',
-                borderWidth: 1, // độ dày
-                borderColor: 'rgb(255, 99, 132)', // màu line
-                pointRadius: 0, // điển chấm data trên line
-                tension: 0.5, //độ uốn của line
-                backgroundColor: 'rgb(255, 99, 132)',
-            },
-        ],
-    };
+setInterval(rd, 1000);
+function rd() {
+    var connect = document.getElementById('connect');
+    connect.classList.add('green');
+    // show data
+    let levelWater = (db.mực_nước.hotpress / 100) * 119.19;
+    document.getElementById('btn1').style.height = `${levelWater}px`;
+    document.getElementById('hotpress_level').textContent = db.mực_nước.hotpress.toFixed(1) + ' %';
+    document.getElementById('hotpress_level').textContent = db.mực_nước.hotpress + ' %';
+    document.getElementById('hotpress_temp').textContent = db.nhiệt_độ.hotpress + ' °C';
 
-    new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: {
-            scales: {
-                x: {
-                    type: 'realtime',
-                    grid: {
-                        display: true, //kẻ dóng hàng dọc
-                    },
-                    realtime: {
-                        duration: 1 * 60 * 1000, //hiển thị 2 phut data
-                        delay: 1000, // lùi data hiển thị về sau 1s
-                    },
-                },
-                y: {
-                    beginAtZero: true,
-                },
-            },
-        },
-    });
+    let levelWaterWetline = (db.mực_nước.wetline / 100) * 119.19;
+    document.getElementById('btn2').style.height = `${levelWaterWetline}px`;
+    document.getElementById('wetline_level').textContent = db.mực_nước.wetline + ' %';
+    document.getElementById('wetline_temp').textContent = db.nhiệt_độ.wetline + ' °C';
 
-    // Nhiệt độ nước
-    const ctx1 = document.getElementById('myChart1');
-    const data1 = {
-        datasets: [
-            {
-                label: 'Nhiệt độ Wet Line Tanker',
-                borderWidth: 1, // độ dày
-                borderColor: 'rgb(255, 159, 64)', // màu line
-                pointRadius: 0, // điển chấm data trên line
-                tension: 0.5, //độ uốn của line,
-                backgroundColor: 'rgb(255, 159, 64)',
-            },
-        ],
-    };
+    document.getElementById('chiller4').textContent = db.nhiệt_độ.chiller4.toFixed(1) + ' °C';
+    document.getElementById('chiller5').textContent = db.nhiệt_độ.chiller5.toFixed(1) + ' °C';
+    document.getElementById('chiller6').textContent = db.nhiệt_độ.chiller6.toFixed(1) + ' °C';
+    document.getElementById('chiller7').textContent = db.nhiệt_độ.chiller7.toFixed(1) + ' °C';
+    document.getElementById('hotpress_machine1').textContent =
+        db.nhiệt_độ.nước_về.hotpress_machine_1.toFixed(1) + ' °C';
+    document.getElementById('hotpress_machine2').textContent =
+        db.nhiệt_độ.nước_về.hotpress_machine_2.toFixed(1) + ' °C';
+    document.getElementById('copper_line1').textContent = db.nhiệt_độ.nước_về.copper_line_1.toFixed(1) + ' °C';
+    document.getElementById('copper_line2').textContent = db.nhiệt_độ.nước_về.copper_line_2.toFixed(1) + ' °C';
 
-    setInterval(() => {
-        data.datasets[0].data.push({
-            x: Date.now(),
-            y: db.nhiệt_độ.hotpress,
-        });
-        data1.datasets[0].data.push({
-            x: Date.now(),
-            y: db.nhiệt_độ.wetline,
-        });
-    }, 100);
-
-    new Chart(ctx1, {
-        type: 'line',
-        data: data1,
-        options: {
-            scales: {
-                x: {
-                    type: 'realtime',
-                    grid: {
-                        display: true, //kẻ dóng hàng dọc
-                    },
-                    realtime: {
-                        duration: 1 * 60 * 1000, //hiển thị 2 phut data
-                        delay: 1000, // lùi data hiển thị về sau 1s
-                    },
-                },
-                y: {
-                    beginAtZero: true,
-                    type: 'linear',
-                },
-            },
-        },
-    });
-};
-
-const readData = (db) => {
-    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_level').textContent =
-        db.mực_nước.hotpress.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_temp').textContent =
-        db.nhiệt_độ.hotpress.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_level').textContent =
-        db.mực_nước.wetline.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('wetline_temp').textContent =
-        db.nhiệt_độ.wetline.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller4').textContent =
-        db.nhiệt_độ.chiller4.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller5').textContent =
-        db.nhiệt_độ.chiller5.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller6').textContent =
-        db.nhiệt_độ.chiller6.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('chiller7').textContent =
-        db.nhiệt_độ.chiller7.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_machine1').textContent =
-        db.nhiệt_độ.nước_về.hotpress_machine_1.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress_machine2').textContent =
-        db.nhiệt_độ.nước_về.hotpress_machine_2.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('copper_line1').textContent =
-        db.nhiệt_độ.nước_về.copper_line_1.toFixed(1);
-    document.getElementById('left-wapper').getSVGDocument().getElementById('copper_line2').textContent =
-        db.nhiệt_độ.nước_về.copper_line_2.toFixed(1);
-
-    // add css
-    if (db) {
-        document
-            .getElementById('left-wapper')
-            .getSVGDocument()
-            .getElementById('style1190')
-            .append('@import url(../css/styleSvg.css)');
-    }
+    // // add css
+    // document
+    //     .getElementById('left-wapper')
+    //     .getSVGDocument()
+    //     .getElementById('style1190')
+    //     .append('@import url(../css/styleSvg.css)');
 
     // check van
     if (db.van_chính.hotpress === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path30537').style.animation =
-            'animate 70s linear infinite';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path30134').style.animation =
-            'animate 70s linear infinite';
         document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress').style.opacity = 0;
     }
+    if (db.van_chính.hotpress === 0) {
+        document.getElementById('water_hotpress').style.opacity = 0;
+    }
     if (db.van_chính.wetline === 1) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path30134').style.animation =
-            'animate 70s linear infinite';
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path30535').style.animation =
-            'animate 70s linear infinite';
         document.getElementById('left-wapper').getSVGDocument().getElementById('wetline').style.opacity = 0;
+    }
+    if (db.van_chính.wetline === 0) {
+        document.getElementById('water_wetline').style.opacity = 0;
     }
 
     // check pump
     for (var i = 1; i < 15; i++) {
         if (db.pump[i] === 1) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('pump_' + i).style.opacity = '0';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -196,10 +125,6 @@ const readData = (db) => {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('pump_' + i).style.opacity = '1';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
                 .getElementById('pump' + i).style.fill = '#ff0000';
             document
                 .getElementById('left-wapper')
@@ -216,8 +141,8 @@ const readData = (db) => {
         }
     }
 
-    // check chiller
-        // chiller4
+    // check fan chiller
+    // chiller4
     for (var i = 1; i < 3; i++) {
         if (db.chill.chill4.comp[i] === 1) {
             document
@@ -227,7 +152,7 @@ const readData = (db) => {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller4_comp_' + i).style.animation = 'fanRotate 0.7s linear infinite';
+                .getElementById('chiller4_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -248,7 +173,7 @@ const readData = (db) => {
         }
     }
 
-        // chiller5
+    // chiller5
     for (var i = 1; i < 3; i++) {
         if (db.chill.chill5.comp[i] === 1) {
             document
@@ -258,7 +183,7 @@ const readData = (db) => {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller5_comp_' + i).style.animation = 'fanRotate 0.7s linear infinite';
+                .getElementById('chiller5_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -279,8 +204,8 @@ const readData = (db) => {
         }
     }
 
-        // chiller6
-    for (var i = 1; i < 4; i++) {
+    // chiller6
+    for (var i = 1; i < 3; i++) {
         if (db.chill.chill6.comp[i] === 1) {
             document
                 .getElementById('left-wapper')
@@ -289,7 +214,7 @@ const readData = (db) => {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller6_comp_' + i).style.animation = 'fanRotate 0.7s linear infinite';
+                .getElementById('chiller6_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -310,7 +235,7 @@ const readData = (db) => {
         }
     }
 
-        // chiller7
+    // chiller7
     for (var i = 1; i < 3; i++) {
         if (db.chill.chill7.comp[i] === 1) {
             document
@@ -320,7 +245,7 @@ const readData = (db) => {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller7_comp_' + i).style.animation = 'fanRotate 0.7s linear infinite';
+                .getElementById('chiller7_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -341,136 +266,288 @@ const readData = (db) => {
         }
     }
 
-    // check fan
-        // chiller4
-    for (var i = 1; i < 5; i++) {
-        if (db.chill.chill4.fan[i] === 1) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_fan_' + i).style.fill = '#00ff37';
-        } else {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_fan_' + i).style.fill = '#ff0000';
-        }
-    }
+    // // check cooling
+    // // chiller4
+    // for (var i = 1; i < 9; i++) {
+    //     if (db.chill.chill4.cooling1[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp1_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp1_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp1_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    //     if (db.chill.chill4.cooling2[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp2_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp2_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller4_comp2_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    // }
 
-        // chiller5
-    for (var i = 1; i < 5; i++) {
-        if (db.chill.chill5.fan[i] === 1) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_fan_' + i).style.fill = '#00ff37';
-        } else {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_fan_' + i).style.fill = '#ff0000';
-        }
-    }
+    // // chiller5
+    // for (var i = 1; i < 5; i++) {
+    //     if (db.chill.chill5.cooling1[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp1_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp1_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp1_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    //     if (db.chill.chill5.cooling2[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp2_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp2_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller5_comp2_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    // }
 
-            // chiller6
-    for (var i = 1; i < 7; i++) {
-        if (db.chill.chill6.fan[i] === 1) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_fan_' + i).style.fill = '#00ff37';
-        } else {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_fan_' + i).style.fill = '#ff0000';
-        }
-    }
+    // // chiller6
+    // for (var i = 1; i < 5; i++) {
+    //     if (db.chill.chill6.cooling1[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp1_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp1_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp1_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    //     if (db.chill.chill6.cooling2[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp2_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp2_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller6_comp2_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    // }
 
-        // chiller7
-    for (var i = 1; i < 5; i++) {
-        if (db.chill.chill7.fan[i] === 1) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_fan_' + i).style.fill = '#00ff37';
-        }
-        if (db.chill.chill7.fan[i] === 0) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_fan_' + i).style.fill = '#ff0000';
-        }
-    }
+    // // chiller7
+    // for (var i = 1; i < 5; i++) {
+    //     if (db.chill.chill7.cooling1[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp1_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp1_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp1_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    //     if (db.chill.chill5.cooling2[i] === 1) {
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp2_fan' + i).style.fill = '#00ff37';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp2_fan' + i).style.transformOrigin = 'center';
+    //         document
+    //             .getElementById('left-wapper')
+    //             .getSVGDocument()
+    //             .getElementById('chiller7_comp2_fan' + i).style.transformBox = 'fill-box';
+    //     }
+    // }
 
     // check spec
-        // wetline
+    // wetline
     if (db.nhiệt_độ.wetline > 23 || db.nhiệt_độ.wetline < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path57659').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path57659').style.fill = '';
+        document.getElementById('wetline_temp').style.backgroundColor = '#d40000';
     }
 
-        // hotpress
+    // hotpress
     if (db.nhiệt_độ.hotpress > 23 || db.nhiệt_độ.hotpress < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path16430').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path16430').style.fill = '';
+        document.getElementById('hotpress_temp').style.backgroundColor = '#d40000';
     }
 
-        // chiller4
-    if (db.nhiệt_độ.chiller4 > 23 || db.nhiệt_độ.chiller4 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path22063-4').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path22063-4').style.fill = '';
+    // chiller
+    for (var i = 4; i < 8; i++) {
+        if (
+            document.getElementById(`chiller${i}`).textContent.slice(0, 2) > 23 ||
+            document.getElementById(`chiller${i}`).textContent.slice(0, 2) < 20
+        ) {
+            document.getElementById(`chiller${i}`).style.backgroundColor = '#d40000';
+        }
     }
 
-        // chiller5
-    if (db.nhiệt_độ.chiller5 > 23 || db.nhiệt_độ.chiller5 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path106790').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path106790').style.fill = '';
+    for (i = 1; i < 3; i++) {
+        if (
+            document.getElementById(`hotpress_machine${i}`).textContent.slice(0, 2) > 15 ||
+            document.getElementById(`hotpress_machine${i}`).textContent.slice(0, 2) < 10
+        ) {
+            document.getElementById(`hotpress_machine${i}`).style.backgroundColor = '#d40000';
+        }
+        if (
+            document.getElementById(`copper_line${i}`).textContent.slice(0, 2) > 15 ||
+            document.getElementById(`copper_line${i}`).textContent.slice(0, 2) < 10
+        ) {
+            document.getElementById(`copper_line${i}`).style.backgroundColor = '#d40000';
+        }
     }
 
-        // chiller6
-    if (db.nhiệt_độ.chiller6 > 23 || db.nhiệt_độ.chiller6 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113180').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113180').style.fill = '';
-    }
+    // Mực nước
+    const ctx = document.getElementById('myChart').getContext('2d');
+    const data = {
+        datasets: [
+            {
+                label: 'Nhiệt độ Hot Press Tanker',
+                borderWidth: 1, // độ dày
+                borderColor: 'rgb(255, 99, 132)', // màu line
+                pointRadius: 0, // điển chấm data trên line
+                tension: 0.5, //độ uốn của line
+                backgroundColor: 'rgb(255, 99, 132)',
+            },
+        ],
+    };
+    $('.chartjs-size-monitor').each(function () {
+        $(this).remove();
+    });
+    new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: {
+            scales: {
+                x: {
+                    type: 'realtime',
+                    grid: {
+                        display: true, //kẻ dóng hàng dọc
+                    },
+                    realtime: {
+                        duration: 1 * 60 * 1000, //hiển thị 2 phut data
+                        delay: 1000, // lùi data hiển thị về sau 1s
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                },
+            },
+        },
+    });
 
-        // chiller7
-    if (db.nhiệt_độ.chiller7 > 23 || db.nhiệt_độ.chiller7 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113418').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path113418').style.fill = '';
-    }
+    // Nhiệt độ nước
+    const ctx1 = document.getElementById('myChart1').getContext('2d');
+    const data1 = {
+        datasets: [
+            {
+                label: 'Nhiệt độ Wet Line Tanker',
+                borderWidth: 1, // độ dày
+                borderColor: 'rgb(255, 159, 64)', // màu line
+                pointRadius: 0, // điển chấm data trên line
+                tension: 0.5, //độ uốn của line,
+                backgroundColor: 'rgb(255, 159, 64)',
+            },
+        ],
+    };
 
-        // hotpress machine 1
-    if (db.nhiệt_độ.nước_về.hotpress_machine_1 > 23 || db.nhiệt_độ.nước_về.hotpress_machine_1 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path106790-1').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('path106790-1').style.fill = '';
-    }
+    setInterval(() => {
+        data.datasets[0].data.push({
+            x: Date.now(),
+            y: db.nhiệt_độ.hotpress,
+        });
+        data1.datasets[0].data.push({
+            x: Date.now(),
+            y: db.nhiệt_độ.wetline,
+        });
+    }, 1000);
 
-        // hotpress machine 2
-    if (db.nhiệt_độ.nước_về.hotpress_machine_2 > 23 || db.nhiệt_độ.nước_về.hotpress_machine_2 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('rect43688').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('rect43688').style.fill = '';
-    }
-
-        // copper line 1
-    if (db.nhiệt_độ.nước_về.copper_line_1 > 23 || db.nhiệt_độ.nước_về.copper_line_1 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('rect313556').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('rect313556').style.fill = '';
-    }
-
-        // copper line 2
-    if (db.nhiệt_độ.nước_về.copper_line_2 > 23 || db.nhiệt_độ.nước_về.copper_line_2 < 20) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('rect119697').style.fill = '#d40000';
-    } else {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('rect119697').style.fill = '';
-    }
-};
+    new Chart(ctx1, {
+        type: 'line',
+        data: data1,
+        options: {
+            scales: {
+                x: {
+                    type: 'realtime',
+                    grid: {
+                        display: true, //kẻ dóng hàng dọc
+                    },
+                    realtime: {
+                        duration: 1 * 60 * 1000, //hiển thị 2 phut data
+                        delay: 1000, // lùi data hiển thị về sau 1s
+                    },
+                },
+                y: {
+                    beginAtZero: true,
+                    type: 'linear',
+                },
+            },
+        },
+    });
+}
