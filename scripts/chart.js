@@ -33,6 +33,7 @@ function onConnectionLost(responseObject) {
 // This is the function which handles received messages
 function myMessageArrived(message) {
     db = JSON.parse(message.payloadString);
+
 }
 
 // setInterval(() => {
@@ -57,14 +58,13 @@ function rd() {
     // show data
     let levelWater = (db.mực_nước.hotpress / 100) * 119.19;
     document.getElementById('btn1').style.height = `${levelWater}px`;
-    document.getElementById('hotpress_level').textContent = db.mực_nước.hotpress.toFixed(1) + ' %';
-    document.getElementById('hotpress_level').textContent = db.mực_nước.hotpress + ' %';
-    document.getElementById('hotpress_temp').textContent = db.nhiệt_độ.hotpress + ' °C';
+    document.getElementById('hotpress_level').textContent = db.mực_nước.hotpress.toFixed(2) + ' %';
+    document.getElementById('hotpress_temp').textContent = db.nhiệt_độ.hotpress.toFixed(1) + ' °C';
 
     let levelWaterWetline = (db.mực_nước.wetline / 100) * 119.19;
     document.getElementById('btn2').style.height = `${levelWaterWetline}px`;
-    document.getElementById('wetline_level').textContent = db.mực_nước.wetline + ' %';
-    document.getElementById('wetline_temp').textContent = db.nhiệt_độ.wetline + ' °C';
+    document.getElementById('wetline_level').textContent = db.mực_nước.wetline.toFixed(2) + ' %';
+    document.getElementById('wetline_temp').textContent = db.nhiệt_độ.wetline.toFixed(1) + ' °C';
 
     document.getElementById('chiller4').textContent = db.nhiệt_độ.chiller4.toFixed(1) + ' °C';
     document.getElementById('chiller5').textContent = db.nhiệt_độ.chiller5.toFixed(1) + ' °C';
@@ -104,7 +104,7 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('pump' + i).style.fill = '#00ff37';
+                .getElementById('pump' + i).style.fill = '#00CD00';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -148,7 +148,7 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller4_comp_' + i).style.fill = '#00ff37';
+                .getElementById('chiller4_comp_' + i).style.fill = '#00CD00';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -179,7 +179,7 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller5_comp_' + i).style.fill = '#00ff37';
+                .getElementById('chiller5_comp_' + i).style.fill = '#00CD00';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -210,7 +210,7 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller6_comp_' + i).style.fill = '#00ff37';
+                .getElementById('chiller6_comp_' + i).style.fill = '#00CD00';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -241,7 +241,7 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller7_comp_' + i).style.fill = '#00ff37';
+                .getElementById('chiller7_comp_' + i).style.fill = '#00CD00';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -266,166 +266,166 @@ function rd() {
         }
     }
 
-    // // check cooling
-    // // chiller4
-    // for (var i = 1; i < 9; i++) {
-    //     if (db.chill.chill4.cooling1[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp1_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp1_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp1_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    //     if (db.chill.chill4.cooling2[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp2_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp2_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller4_comp2_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    // }
+    // check cooling
+    // chiller4
+    for (var i = 1; i < 9; i++) {
+        if (db.chill.chill4.cooling1[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp1_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp1_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp1_fan' + i).style.transformBox = 'fill-box';
+        }
+        if (db.chill.chill4.cooling2[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp2_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp2_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller4_comp2_fan' + i).style.transformBox = 'fill-box';
+        }
+    }
 
-    // // chiller5
-    // for (var i = 1; i < 5; i++) {
-    //     if (db.chill.chill5.cooling1[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp1_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp1_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp1_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    //     if (db.chill.chill5.cooling2[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp2_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp2_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller5_comp2_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    // }
+    // chiller5
+    for (var i = 1; i < 5; i++) {
+        if (db.chill.chill5.cooling1[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp1_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp1_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp1_fan' + i).style.transformBox = 'fill-box';
+        }
+        if (db.chill.chill5.cooling2[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp2_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp2_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller5_comp2_fan' + i).style.transformBox = 'fill-box';
+        }
+    }
 
-    // // chiller6
-    // for (var i = 1; i < 5; i++) {
-    //     if (db.chill.chill6.cooling1[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp1_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp1_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp1_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    //     if (db.chill.chill6.cooling2[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp2_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp2_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller6_comp2_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    // }
+    // chiller6
+    for (var i = 1; i < 5; i++) {
+        if (db.chill.chill6.cooling1[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp1_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp1_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp1_fan' + i).style.transformBox = 'fill-box';
+        }
+        if (db.chill.chill6.cooling2[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp2_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp2_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller6_comp2_fan' + i).style.transformBox = 'fill-box';
+        }
+    }
 
-    // // chiller7
-    // for (var i = 1; i < 5; i++) {
-    //     if (db.chill.chill7.cooling1[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp1_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp1_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp1_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    //     if (db.chill.chill5.cooling2[i] === 1) {
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp2_fan' + i).style.fill = '#00ff37';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp2_fan' + i).style.transformOrigin = 'center';
-    //         document
-    //             .getElementById('left-wapper')
-    //             .getSVGDocument()
-    //             .getElementById('chiller7_comp2_fan' + i).style.transformBox = 'fill-box';
-    //     }
-    // }
+    // chiller7
+    for (var i = 1; i < 5; i++) {
+        if (db.chill.chill7.cooling1[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp1_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp1_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp1_fan' + i).style.transformBox = 'fill-box';
+        }
+        if (db.chill.chill5.cooling2[i] === 1) {
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp2_fan' + i).style.fill = '#00CD00';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp2_fan' + i).style.transformOrigin = 'center';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('chiller7_comp2_fan' + i).style.transformBox = 'fill-box';
+        }
+    }
 
     // check spec
     // wetline
@@ -434,7 +434,7 @@ function rd() {
     }
 
     // hotpress
-    if (db.nhiệt_độ.hotpress > 23 || db.nhiệt_độ.hotpress < 20) {
+    if (db.nhiệt_độ.hotpress > 23 || db.nhiệt_độ.hotpress < 22) {
         document.getElementById('hotpress_temp').style.backgroundColor = '#d40000';
     }
 
