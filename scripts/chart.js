@@ -33,7 +33,7 @@ function onConnectionLost(responseObject) {
 // This is the function which handles received messages
 function myMessageArrived(message) {
     db = JSON.parse(message.payloadString);
-
+    // console.log(db);
 }
 
 // setInterval(() => {
@@ -85,16 +85,20 @@ function rd() {
     //     .append('@import url(../css/styleSvg.css)');
 
     // check van
-    if (db.van_chính.hotpress === 1) {
+    if (db.van_chính.hotpress == true) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress').style.opacity = 0;
+        document.getElementById('water_hotpress').style.opacity = 1;
     }
-    if (db.van_chính.hotpress === 0) {
+    if (db.van_chính.hotpress == false) {
+        document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress').style.opacity = 1;
         document.getElementById('water_hotpress').style.opacity = 0;
     }
-    if (db.van_chính.wetline === 1) {
+    if (db.van_chính.wetline == true) {
         document.getElementById('left-wapper').getSVGDocument().getElementById('wetline').style.opacity = 0;
+        document.getElementById('water_wetline').style.opacity = 1;
     }
-    if (db.van_chính.wetline === 0) {
+    if (db.van_chính.wetline == false) {
+        document.getElementById('left-wapper').getSVGDocument().getElementById('wetline').style.opacity = 1;
         document.getElementById('water_wetline').style.opacity = 0;
     }
 
