@@ -33,7 +33,7 @@ function onConnectionLost(responseObject) {
 // This is the function which handles received messages
 function myMessageArrived(message) {
     db = JSON.parse(message.payloadString);
-    // console.log(db);
+    console.log(db);
 }
 
 // setInterval(() => {
@@ -125,6 +125,10 @@ function rd() {
                 .getElementById('left-wapper')
                 .getSVGDocument()
                 .getElementById('path' + i).style.animation = ' animate 70s linear infinite';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('p' + i).style.opacity = '0';
         } else {
             document
                 .getElementById('left-wapper')
@@ -142,6 +146,10 @@ function rd() {
                 .getElementById('left-wapper')
                 .getSVGDocument()
                 .getElementById('pump' + i).style.transformBox = 'fill-box';
+            document
+                .getElementById('left-wapper')
+                .getSVGDocument()
+                .getElementById('p' + i).style.opacity = '1';
         }
     }
 
@@ -433,39 +441,39 @@ function rd() {
 
     // check spec
     // wetline
-    if (db.nhiệt_độ.wetline > 23 || db.nhiệt_độ.wetline < 20) {
-        document.getElementById('wetline_temp').style.backgroundColor = '#d40000';
-    }
+    // if (db.nhiệt_độ.wetline > 23 || db.nhiệt_độ.wetline < 20) {
+    //     document.getElementById('wetline_temp').style.backgroundColor = '#d40000';
+    // }
 
-    // hotpress
-    if (db.nhiệt_độ.hotpress > 23 || db.nhiệt_độ.hotpress < 22) {
-        document.getElementById('hotpress_temp').style.backgroundColor = '#d40000';
-    }
+    // // hotpress
+    // if (db.nhiệt_độ.hotpress > 23 || db.nhiệt_độ.hotpress < 22) {
+    //     document.getElementById('hotpress_temp').style.backgroundColor = '#d40000';
+    // }
 
-    // chiller
-    for (var i = 4; i < 8; i++) {
-        if (
-            document.getElementById(`chiller${i}`).textContent.slice(0, 2) > 23 ||
-            document.getElementById(`chiller${i}`).textContent.slice(0, 2) < 20
-        ) {
-            document.getElementById(`chiller${i}`).style.backgroundColor = '#d40000';
-        }
-    }
+    // // chiller
+    // for (var i = 4; i < 8; i++) {
+    //     if (
+    //         document.getElementById(`chiller${i}`).textContent.slice(0, 2) > 23 ||
+    //         document.getElementById(`chiller${i}`).textContent.slice(0, 2) < 20
+    //     ) {
+    //         document.getElementById(`chiller${i}`).style.backgroundColor = '#d40000';
+    //     }
+    // }
 
-    for (i = 1; i < 3; i++) {
-        if (
-            document.getElementById(`hotpress_machine${i}`).textContent.slice(0, 2) > 15 ||
-            document.getElementById(`hotpress_machine${i}`).textContent.slice(0, 2) < 10
-        ) {
-            document.getElementById(`hotpress_machine${i}`).style.backgroundColor = '#d40000';
-        }
-        if (
-            document.getElementById(`copper_line${i}`).textContent.slice(0, 2) > 15 ||
-            document.getElementById(`copper_line${i}`).textContent.slice(0, 2) < 10
-        ) {
-            document.getElementById(`copper_line${i}`).style.backgroundColor = '#d40000';
-        }
-    }
+    // for (i = 1; i < 3; i++) {
+    //     if (
+    //         document.getElementById(`hotpress_machine${i}`).textContent.slice(0, 2) > 15 ||
+    //         document.getElementById(`hotpress_machine${i}`).textContent.slice(0, 2) < 10
+    //     ) {
+    //         document.getElementById(`hotpress_machine${i}`).style.backgroundColor = '#d40000';
+    //     }
+    //     if (
+    //         document.getElementById(`copper_line${i}`).textContent.slice(0, 2) > 15 ||
+    //         document.getElementById(`copper_line${i}`).textContent.slice(0, 2) < 10
+    //     ) {
+    //         document.getElementById(`copper_line${i}`).style.backgroundColor = '#d40000';
+    //     }
+    // }
 
     // Mực nước
     const ctx = document.getElementById('myChart').getContext('2d');
