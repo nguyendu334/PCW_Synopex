@@ -74,8 +74,10 @@ function rd() {
         db.nhiệt_độ.nước_về.hotpress_machine_1.toFixed(1) + ' °C';
     document.getElementById('hotpress_machine2').textContent =
         db.nhiệt_độ.nước_về.hotpress_machine_2.toFixed(1) + ' °C';
-    document.getElementById('copper_line1').textContent = db.nhiệt_độ.nước_về.copper_line_1.toFixed(1) + ' °C';
-    document.getElementById('copper_line2').textContent = db.nhiệt_độ.nước_về.copper_line_2.toFixed(1) + ' °C';
+    document.getElementById('copper_line1').textContent =
+        db.nhiệt_độ.nước_về.copper_line_1.toFixed(1) + ' °C';
+    document.getElementById('copper_line2').textContent =
+        db.nhiệt_độ.nước_về.copper_line_2.toFixed(1) + ' °C';
 
     // // add css
     // document
@@ -86,20 +88,48 @@ function rd() {
 
     // check van
     if (db.van_chính.hotpress == true) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress').style.opacity = 0;
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('hotpress').style.opacity = 0;
         document.getElementById('water_hotpress').style.opacity = 1;
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('path15').style.animation = 'animate 70s linear infinite';
     }
     if (db.van_chính.hotpress == false) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('hotpress').style.opacity = 1;
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('hotpress').style.opacity = 1;
         document.getElementById('water_hotpress').style.opacity = 0;
+        document
+        .getElementById('left-wapper')
+        .getSVGDocument()
+        .getElementById('path15').style.animation = '';
     }
     if (db.van_chính.wetline == true) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('wetline').style.opacity = 0;
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('wetline').style.opacity = 0;
         document.getElementById('water_wetline').style.opacity = 1;
+        document
+        .getElementById('left-wapper')
+        .getSVGDocument()
+        .getElementById('path16').style.animation = 'animate 70s linear infinite';
     }
     if (db.van_chính.wetline == false) {
-        document.getElementById('left-wapper').getSVGDocument().getElementById('wetline').style.opacity = 1;
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('wetline').style.opacity = 1;
         document.getElementById('water_wetline').style.opacity = 0;
+        document
+        .getElementById('left-wapper')
+        .getSVGDocument()
+        .getElementById('path16').style.animation = '';
     }
 
     // check pump
@@ -130,10 +160,10 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('p' + i).style.opacity = '0';
         } else {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('pump' + i).style.fill = '#ff0000';
+            // document
+            //     .getElementById('left-wapper')
+            //     .getSVGDocument()
+            //     .getElementById('pump' + i).style.fill = '#ff0000';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -164,7 +194,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller4_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller4_comp_' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -195,7 +226,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller5_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller5_comp_' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -226,7 +258,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller6_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller6_comp_' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -257,7 +290,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller7_comp_' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller7_comp_' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -289,7 +323,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller4_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller4_comp1_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -307,7 +342,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller4_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller4_comp2_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -329,7 +365,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller5_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller5_comp1_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -347,7 +384,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller5_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller5_comp2_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -387,7 +425,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller6_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller6_comp1_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -405,7 +444,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller6_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller6_comp2_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -427,7 +467,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller7_comp1_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller7_comp1_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -445,7 +486,8 @@ function rd() {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
-                .getElementById('chiller7_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+                .getElementById('chiller7_comp2_fan' + i).style.animation =
+                'fanRotate 1s linear infinite';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
