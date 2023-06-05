@@ -14,14 +14,14 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 65px;
+    height: 120px;
     background: rgb(15, 1, 63);
 }
 
 .logo {
     display: flex;
     position: absolute;
-    left: 60px;
+    left: 140px;
     text-decoration: none;
 }
 
@@ -39,7 +39,7 @@ body {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size: 34px;
+    font-size: 70px;
 }
 
 /* #loa {
@@ -62,14 +62,14 @@ body {
     display: flex;
     color: rgb(255, 255, 255);
     font-weight: bold;
-    font-size: 45px;
+    font-size: 70px;
 }
 
 #myTime {
     position: absolute;
-    right: 50px;
+    right: 100px;
     color: rgb(255, 255, 255);
-    font-size: 20px;
+    font-size: 40px;
 }
 
 /* chart */
@@ -79,14 +79,14 @@ body {
     left: 20px;
     background: white;
     font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
+    font-size: 28px;
 }
 
 .chartBox {
     position: relative;
     display: inline-block;
-    width: 959px;
-    height: 179px;
+    width: 1918px;
+    height: 358px;
     background: rgb(255, 255, 255);
     border-right: 1px solid rgb(0, 0, 0);
     border-bottom: 1px solid rgb(0, 0, 0);
@@ -95,9 +95,9 @@ body {
 .chartBox1 {
     position: absolute;
     display: inline-block;
-    left: 960px;
-    width: 960px;
-    height: 179px;
+    left: 1920px;
+    width: 1920px;
+    height: 358px;
     background: rgb(255, 255, 255);
     border-bottom: 1px solid rgb(0, 0, 0);
 }
@@ -105,15 +105,15 @@ body {
 /* wrapper */
 #left-wapper {
     display: flex;
-    width: 1920px;
-    height: 788px;
+    width:3840px;
+    height: 1600px;
     background: rgb(248, 244, 244);
 }
 
 /* footer */
 .footer {
     position: relative;
-    height: 25px;
+    height: 43px;
     background: aqua;
 }
 
@@ -123,24 +123,24 @@ body {
     }
 
     100% {
-        width: 200px;
+        width: 400px;
     }
 }
 
 .process {
     position: absolute;
     left: 196px;
-    font-size: 17px;
+    font-size: 34px;
     text-transform: uppercase;
     top: 2px;
 }
 
 .input-process {
     position: absolute;
-    height: 15px;
-    border-radius: 5px;
-    top: 4px;
-    left: 314px;
+    height: 30px;
+    border-radius: 10px;
+    top: 6px;
+    left: 430px;
     animation: loader 7s linear infinite;
     background: #e2f102;
     border: none;
@@ -148,11 +148,11 @@ body {
 
 .input-process1 {
     position: absolute;
-    height: 15px;
-    width: 200px;
-    border-radius: 5px;
-    top: 4px;
-    left: 314px;
+    height: 30px;
+    width: 400px;
+    border-radius: 10px;
+    top: 6px;
+    left: 430px;
     background: #2e90eb;
     border: none;
 }
@@ -169,18 +169,18 @@ body {
 
 .connect {
     position: absolute;
-    left: 570px;
-    font-size: 17px;
+    left: 1150px;
+    font-size: 34px;
     top: 2px;
 }
 
 #connect {
     position: absolute;
-    height: 15px;
-    width: 15px;
+    height: 30px;
+    width: 30px;
     border-radius: 100%;
-    top: 2px;
-    left: 660px;
+    top: 4px;
+    left: 1330px;
     border: none;
 }
 
@@ -240,8 +240,8 @@ body {
 
 .time-data {
     position: absolute;
-    left: 1200px;
-    font-size: 17px;
+    left: 2500px;
+    font-size: 34px;
     top: 2px;
 }
 
@@ -249,17 +249,17 @@ body {
     position: absolute;
     width: 500px;
     top: 2px;
-    left: 1370px;
+    left: 2850px;
     border: none;
-    font-size: 16px;
+    font-size: 32px;
     font-family: 'Times New Roman', Times, serif;
 }
 
 .water {
     display: flex;
     position: absolute;
-    width: 40px;
-    height: 150px;
+    width: 80px;
+    height: 300px;
     transform: rotate(180deg);
     opacity: 0.7;
 }
@@ -270,7 +270,7 @@ body {
     border: none;
     z-index: 1;
     background-color: #65bffa;
-    width: 195.57px;
+    width: 397px;
     padding: 0;
     transform: translateY(-100%);
     opacity: 0.95;
@@ -282,9 +282,9 @@ body {
     align-items: center;
     position: absolute;
     z-index: 1;
-    font-size: 13px;
-    width: 75px;
-    height: 17px;
+    font-size: 26px;
+    width: 150px;
+    height: 34px;
     background-color: white;
     color: black;
     border: 1px solid black;
@@ -295,7 +295,7 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 16px;
+    font-size: 32px;
     z-index: 1;
     border-bottom: 1px solid black;
     color: black;
@@ -307,10 +307,10 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 22px;
+    font-size: 44px;
     z-index: 1;
-    width: 75px;
-    height: 27px;
+    width: 150px;
+    height: 54px;
     background-color: rgb(0, 0, 0);
     font-family: 'myDigitalFont';
     font-weight: 900;
@@ -324,10 +324,10 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 20px;
+    font-size: 40px;
     z-index: 1;
-    width: 70px;
-    height: 19px;
+    width: 140px;
+    height: 38px;
     background-color: black;
     font-family: 'myDigitalFont';
     font-weight: 900;
@@ -341,10 +341,10 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 15px;
+    font-size: 40px;
     z-index: 1;
-    width: 50px;
-    height: 18px;
+    width: 140px;
+    height: 50px;
     background-color: black;
     font-family: 'myDigitalFont';
     font-weight: 900;

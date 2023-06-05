@@ -56,12 +56,12 @@ function rd() {
     var connect = document.getElementById('connect');
     connect.classList.add('green');
     // show data
-    let levelWater = (db.mực_nước.hotpress / 100) * 119.19;
+    let levelWater = (db.mực_nước.hotpress / 100) * 242;
     document.getElementById('btn1').style.height = `${levelWater}px`;
     document.getElementById('hotpress_level').textContent = db.mực_nước.hotpress.toFixed(2) + ' %';
     document.getElementById('hotpress_temp').textContent = db.nhiệt_độ.hotpress.toFixed(1) + ' °C';
 
-    let levelWaterWetline = (db.mực_nước.wetline / 100) * 119.19;
+    let levelWaterWetline = (db.mực_nước.wetline / 100) * 242;
     document.getElementById('btn2').style.height = `${levelWaterWetline}px`;
     document.getElementById('wetline_level').textContent = db.mực_nước.wetline.toFixed(2) + ' %';
     document.getElementById('wetline_temp').textContent = db.nhiệt_độ.wetline.toFixed(1) + ' °C';
@@ -104,7 +104,7 @@ function rd() {
 
     // check pump
     for (var i = 1; i < 15; i++) {
-        if (db.pump[i] === 1) {
+        if (db.pump[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -156,7 +156,7 @@ function rd() {
     // check fan chiller
     // chiller4
     for (var i = 1; i < 3; i++) {
-        if (db.chill.chill4.comp[i] === 1) {
+        if (db.chill.chill4.comp[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -186,8 +186,8 @@ function rd() {
     }
 
     // chiller5
-    for (var i = 1; i < 3; i++) {
-        if (db.chill.chill5.comp[i] === 1) {
+    for (var i = 1; i < 4; i++) {
+        if (db.chill.chill5.comp[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -205,10 +205,10 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller5_comp_' + i).style.transformBox = 'fill-box';
         } else {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp_' + i).style.fill = '#ff0000';
+            // document
+            //     .getElementById('left-wapper')
+            //     .getSVGDocument()
+            //     .getElementById('chiller5_comp_' + i).style.fill = '#ff0000';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -218,7 +218,7 @@ function rd() {
 
     // chiller6
     for (var i = 1; i < 3; i++) {
-        if (db.chill.chill6.comp[i] === 1) {
+        if (db.chill.chill6.comp[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -236,10 +236,10 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller6_comp_' + i).style.transformBox = 'fill-box';
         } else {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp_' + i).style.fill = '#ff0000';
+            // document
+            //     .getElementById('left-wapper')
+            //     .getSVGDocument()
+            //     .getElementById('chiller6_comp_' + i).style.fill = '#ff0000';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -249,7 +249,7 @@ function rd() {
 
     // chiller7
     for (var i = 1; i < 3; i++) {
-        if (db.chill.chill7.comp[i] === 1) {
+        if (db.chill.chill7.comp[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -267,10 +267,10 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller7_comp_' + i).style.transformBox = 'fill-box';
         } else {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp_' + i).style.fill = '#ff0000';
+            // document
+            //     .getElementById('left-wapper')
+            //     .getSVGDocument()
+            //     .getElementById('chiller7_comp_' + i).style.fill = '#ff0000';
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -281,7 +281,7 @@ function rd() {
     // check cooling
     // chiller4
     for (var i = 1; i < 9; i++) {
-        if (db.chill.chill4.cooling1[i] === 1) {
+        if (db.chill.chill4.cooling1[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -299,7 +299,7 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller4_comp1_fan' + i).style.transformBox = 'fill-box';
         }
-        if (db.chill.chill4.cooling2[i] === 1) {
+        if (db.chill.chill4.cooling2[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -320,8 +320,8 @@ function rd() {
     }
 
     // chiller5
-    for (var i = 1; i < 5; i++) {
-        if (db.chill.chill5.cooling1[i] === 1) {
+    for (var i = 1; i < 9; i++) {
+        if (db.chill.chill5.cooling1[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -339,7 +339,7 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller5_comp1_fan' + i).style.transformBox = 'fill-box';
         }
-        if (db.chill.chill5.cooling2[i] === 1) {
+        if (db.chill.chill5.cooling2[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -357,11 +357,29 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller5_comp2_fan' + i).style.transformBox = 'fill-box';
         }
+        // if (db.chill.chill5.cooling3[i] == true) {
+        //     document
+        //         .getElementById('left-wapper')
+        //         .getSVGDocument()
+        //         .getElementById('chiller5_comp2_fan' + i).style.fill = '#00CD00';
+        //     document
+        //         .getElementById('left-wapper')
+        //         .getSVGDocument()
+        //         .getElementById('chiller5_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
+        //     document
+        //         .getElementById('left-wapper')
+        //         .getSVGDocument()
+        //         .getElementById('chiller5_comp2_fan' + i).style.transformOrigin = 'center';
+        //     document
+        //         .getElementById('left-wapper')
+        //         .getSVGDocument()
+        //         .getElementById('chiller5_comp2_fan' + i).style.transformBox = 'fill-box';
+        // }
     }
 
     // chiller6
     for (var i = 1; i < 5; i++) {
-        if (db.chill.chill6.cooling1[i] === 1) {
+        if (db.chill.chill6.cooling1[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -379,7 +397,7 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller6_comp1_fan' + i).style.transformBox = 'fill-box';
         }
-        if (db.chill.chill6.cooling2[i] === 1) {
+        if (db.chill.chill6.cooling2[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -401,7 +419,7 @@ function rd() {
 
     // chiller7
     for (var i = 1; i < 5; i++) {
-        if (db.chill.chill7.cooling1[i] === 1) {
+        if (db.chill.chill7.cooling1[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
@@ -419,7 +437,7 @@ function rd() {
                 .getSVGDocument()
                 .getElementById('chiller7_comp1_fan' + i).style.transformBox = 'fill-box';
         }
-        if (db.chill.chill5.cooling2[i] === 1) {
+        if (db.chill.chill5.cooling2[i] == true) {
             document
                 .getElementById('left-wapper')
                 .getSVGDocument()
