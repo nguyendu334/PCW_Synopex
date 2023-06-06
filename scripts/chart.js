@@ -33,7 +33,6 @@ function onConnectionLost(responseObject) {
 // This is the function which handles received messages
 function myMessageArrived(message) {
     db = JSON.parse(message.payloadString);
-    console.log(db);
 }
 
 // setInterval(() => {
@@ -66,10 +65,10 @@ function rd() {
     document.getElementById('wetline_level').textContent = db.mực_nước.wetline.toFixed(2) + ' %';
     document.getElementById('wetline_temp').textContent = db.nhiệt_độ.wetline.toFixed(1) + ' °C';
 
-    document.getElementById('chiller4').textContent = db.nhiệt_độ.chiller4.toFixed(1) + ' °C';
-    document.getElementById('chiller5').textContent = db.nhiệt_độ.chiller5.toFixed(1) + ' °C';
-    document.getElementById('chiller6').textContent = db.nhiệt_độ.chiller6.toFixed(1) + ' °C';
-    document.getElementById('chiller7').textContent = db.nhiệt_độ.chiller7.toFixed(1) + ' °C';
+    document.getElementById('chiller4').textContent = db.nhiệt_độ.chiller4.toFixed(1) - 8 + ' °C';
+    document.getElementById('chiller5').textContent = db.nhiệt_độ.chiller5.toFixed(1) - 10 + ' °C';
+    document.getElementById('chiller6').textContent = db.nhiệt_độ.chiller6.toFixed(1) - 12 + ' °C';
+    document.getElementById('chiller7').textContent = db.nhiệt_độ.chiller7.toFixed(1) - 9 + ' °C';
     document.getElementById('hotpress_machine1').textContent =
         db.nhiệt_độ.nước_về.hotpress_machine_1.toFixed(1) + ' °C';
     document.getElementById('hotpress_machine2').textContent =

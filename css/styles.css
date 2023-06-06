@@ -324,10 +324,10 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 40px;
+    font-size: 56px;
     z-index: 1;
-    width: 140px;
-    height: 38px;
+    width: 185px;
+    height: 50px;
     background-color: black;
     font-family: 'myDigitalFont';
     font-weight: 900;
