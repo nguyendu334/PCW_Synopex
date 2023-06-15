@@ -307,7 +307,7 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 44px;
+    font-size: 40px;
     z-index: 1;
     width: 150px;
     height: 54px;
@@ -326,7 +326,7 @@ body {
     position: absolute;
     font-size: 56px;
     z-index: 1;
-    width: 185px;
+    width: 215px;
     height: 50px;
     background-color: black;
     font-family: 'myDigitalFont';

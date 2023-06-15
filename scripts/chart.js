@@ -58,18 +58,17 @@ function rd() {
     let levelWater = (db.mực_nước.hotpress / 100) * 242;
     document.getElementById('btn1').style.height = `${levelWater}px`;
     document.getElementById('hotpress_level').textContent = db.mực_nước.hotpress.toFixed(2) + ' %';
-    document.getElementById('hotpress_temp').textContent = db.nhiệt_độ.hotpress.toFixed(1) + ' °C';
+    document.getElementById('hotpress_temp').textContent = db.nhiệt_độ.hotpress.toFixed(2) + ' °C';
 
     let levelWaterWetline = (db.mực_nước.wetline / 100) * 242;
     document.getElementById('btn2').style.height = `${levelWaterWetline}px`;
     document.getElementById('wetline_level').textContent = db.mực_nước.wetline.toFixed(2) + ' %';
-    document.getElementById('wetline_temp').textContent = db.nhiệt_độ.wetline.toFixed(1) + ' °C';
+    document.getElementById('wetline_temp').textContent = db.nhiệt_độ.wetline.toFixed(2) + ' °C';
 
-    document.getElementById('chiller4').textContent = db.nhiệt_độ.chiller4.toFixed(1) - 8.2 + ' °C';
-    document.getElementById('chiller5').textContent = db.nhiệt_độ.chiller5.toFixed(1) - 9.4 + ' °C';
-    document.getElementById('chiller6').textContent =
-        db.nhiệt_độ.chiller6.toFixed(1) - 11.2 + ' °C';
-    document.getElementById('chiller7').textContent = db.nhiệt_độ.chiller7.toFixed(1) - 9.5 + ' °C';
+    document.getElementById('chiller4').textContent = db.nhiệt_độ.chiller4.toFixed(2) + ' °C';
+    document.getElementById('chiller5').textContent = db.nhiệt_độ.chiller5.toFixed(2) + ' °C';
+    document.getElementById('chiller6').textContent = db.nhiệt_độ.chiller6.toFixed(2) + ' °C';
+    document.getElementById('chiller7').textContent = db.nhiệt_độ.chiller7.toFixed(2) + ' °C';
     document.getElementById('hotpress_machine1').textContent =
         db.nhiệt_độ.nước_về.hotpress_machine_1.toFixed(1) + ' °C';
     document.getElementById('hotpress_machine2').textContent =
@@ -310,244 +309,1217 @@ function rd() {
 
     // check cooling
     // chiller4
-    for (var i = 1; i < 9; i++) {
-        if (db.chill.chill4.cooling1[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp1_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp1_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp1_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp1_fan' + i).style.transformBox = 'fill-box';
-        }
-        if (db.chill.chill4.cooling1[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp1_fan' + i).style.animation = '';
-        }
-        if (db.chill.chill4.cooling2[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp2_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp2_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp2_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp2_fan' + i).style.transformBox = 'fill-box';
-        }
+    if (db.chill.chill4.cooling1[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan2').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan5').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan5').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan5').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan5').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan6').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan6').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan6').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan6').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill4.cooling1[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan2').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan5').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan6').style.animation = '';
+    }
 
-        if (db.chill.chill4.cooling2[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller4_comp2_fan' + i).style.animation = '';
-        }
+    if (db.chill.chill4.cooling1[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan4').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan7').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan7').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan7').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan7').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan8').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan8').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan8').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan8').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill4.cooling1[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan2').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan5').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp1_fan6').style.animation = '';
+    }
+
+    if (db.chill.chill4.cooling2[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan2').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan5').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan5').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan5').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan5').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan6').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan6').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan6').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan6').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill4.cooling2[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan2').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan5').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan6').style.animation = '';
+    }
+
+    if (db.chill.chill4.cooling2[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan4').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan7').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan7').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan7').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan7').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan8').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan8').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan8').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan8').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill4.cooling2[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan4').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan7').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller4_comp2_fan8').style.animation = '';
     }
 
     // chiller5
-    for (var i = 1; i < 9; i++) {
-        if (db.chill.chill5.cooling1[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp1_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp1_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp1_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp1_fan' + i).style.transformBox = 'fill-box';
-        }
-        if (db.chill.chill5.cooling1[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp1_fan' + i).style.animation = '';
-        }
-        if (db.chill.chill5.cooling2[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp2_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp2_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp2_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp2_fan' + i).style.transformBox = 'fill-box';
-        }
-        if (db.chill.chill5.cooling2[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller5_comp2_fan' + i).style.animation = '';
-        }
-        // if (db.chill.chill5.cooling3[i] == true) {
-        //     document
-        //         .getElementById('left-wapper')
-        //         .getSVGDocument()
-        //         .getElementById('chiller5_comp2_fan' + i).style.fill = '#00CD00';
-        //     document
-        //         .getElementById('left-wapper')
-        //         .getSVGDocument()
-        //         .getElementById('chiller5_comp2_fan' + i).style.animation = 'fanRotate 1s linear infinite';
-        //     document
-        //         .getElementById('left-wapper')
-        //         .getSVGDocument()
-        //         .getElementById('chiller5_comp2_fan' + i).style.transformOrigin = 'center';
-        //     document
-        //         .getElementById('left-wapper')
-        //         .getSVGDocument()
-        //         .getElementById('chiller5_comp2_fan' + i).style.transformBox = 'fill-box';
-        // }
-        // if (db.chill.chill5.cooling3[i] == false) {
-        //     document
-        //         .getElementById('left-wapper')
-        //         .getSVGDocument()
-        //         .getElementById('chiller5_comp2_fan' + i).style.animation = '';
-        // }
+    if (db.chill.chill5.cooling1[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan2').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan5').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan5').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan5').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan5').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan6').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan6').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan6').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan6').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill5.cooling1[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan2').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan5').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan6').style.animation = '';
+    }
+
+    if (db.chill.chill5.cooling1[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan4').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan7').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan7').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan7').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan7').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan8').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan8').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan8').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan8').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill5.cooling1[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan4').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan7').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp1_fan8').style.animation = '';
+    }
+
+    if (db.chill.chill5.cooling2[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan2').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan5').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan5').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan5').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan5').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan6').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan6').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan6').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan6').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill5.cooling2[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan2').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan5').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan6').style.animation = '';
+    }
+
+    if (db.chill.chill5.cooling2[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan4').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan7').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan7').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan7').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan7').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan8').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan8').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan8').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan8').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill5.cooling2[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan4').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan7').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp2_fan8').style.animation = '';
+    }
+
+    if (db.chill.chill5.cooling3[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan2').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan5').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan5').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan5').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan5').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan6').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan6').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan6').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan6').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill5.cooling3[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan2').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan5').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan6').style.animation = '';
+    }
+
+    if (db.chill.chill5.cooling3[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan4').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan7').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan7').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan7').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan7').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan8').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan8').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan8').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan8').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill5.cooling3[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan4').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan7').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller5_comp3_fan8').style.animation = '';
     }
 
     // chiller6
-    for (var i = 1; i < 5; i++) {
-        if (db.chill.chill6.cooling1[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp1_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp1_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp1_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp1_fan' + i).style.transformBox = 'fill-box';
-        }
-        if (db.chill.chill6.cooling1[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp1_fan' + i).style.animation = '';
-        }
-        if (db.chill.chill6.cooling2[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp2_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp2_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp2_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp2_fan' + i).style.transformBox = 'fill-box';
-        }
-        if (db.chill.chill6.cooling2[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller6_comp2_fan' + i).style.animation = '';
-        }
+    if (db.chill.chill6.cooling1[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan2').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill6.cooling1[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan2').style.animation = '';
+    }
+
+    if (db.chill.chill6.cooling1[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan4').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill6.cooling1[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp1_fan4').style.animation = '';
+    }
+
+    if (db.chill.chill6.cooling2[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan2').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill6.cooling2[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan2').style.animation = '';
+    }
+
+    if (db.chill.chill6.cooling2[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan4').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill6.cooling2[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller6_comp2_fan4').style.animation = '';
     }
 
     // chiller7
-    for (var i = 1; i < 5; i++) {
-        if (db.chill.chill7.cooling1[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp1_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp1_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp1_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp1_fan' + i).style.transformBox = 'fill-box';
-        }
-        if (db.chill.chill7.cooling1[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp1_fan' + i).style.animation = '';
-        }
-        if (db.chill.chill5.cooling2[i] == true) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp2_fan' + i).style.fill = '#00CD00';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp2_fan' + i).style.animation =
-                'fanRotate 1s linear infinite';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp2_fan' + i).style.transformOrigin = 'center';
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp2_fan' + i).style.transformBox = 'fill-box';
-        }
-        if (db.chill.chill5.cooling2[i] == false) {
-            document
-                .getElementById('left-wapper')
-                .getSVGDocument()
-                .getElementById('chiller7_comp2_fan' + i).style.animation = '';
-        }
+    if (db.chill.chill7.cooling1[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan2').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill7.cooling1[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan2').style.animation = '';
+    }
+
+    if (db.chill.chill7.cooling1[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan4').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill7.cooling1[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp1_fan4').style.animation = '';
+    }
+
+    if (db.chill.chill7.cooling2[1] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan1').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan1').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan1').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan1').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan2').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan2').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan2').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan2').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill7.cooling2[1] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan1').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan2').style.animation = '';
+    }
+
+    if (db.chill.chill7.cooling2[2] == true) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan3').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan3').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan3').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan3').style.transformBox = 'fill-box';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan4').style.fill = '#00CD00';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan4').style.animation = 'fanRotate 1s linear infinite';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan4').style.transformOrigin = 'center';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan4').style.transformBox = 'fill-box';
+    }
+    if (db.chill.chill7.cooling2[2] == false) {
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan3').style.animation = '';
+        document
+            .getElementById('left-wapper')
+            .getSVGDocument()
+            .getElementById('chiller7_comp2_fan4').style.animation = '';
     }
 
     // check spec
