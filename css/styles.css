@@ -283,8 +283,8 @@ body {
     position: absolute;
     z-index: 1;
     font-size: 26px;
-    width: 150px;
-    height: 34px;
+    width: 190px;
+    height: 36px;
     background-color: white;
     color: black;
     border: 1px solid black;
@@ -307,10 +307,10 @@ body {
     justify-content: center;
     align-items: center;
     position: absolute;
-    font-size: 40px;
+    font-size: 51px;
     z-index: 1;
-    width: 150px;
-    height: 54px;
+    width: 190px;
+    height: 60px;
     background-color: rgb(0, 0, 0);
     font-family: 'myDigitalFont';
     font-weight: 900;
