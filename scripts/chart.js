@@ -93,20 +93,58 @@ function rd() {
         document.getElementById('wetline_temp').style.backgroundColor = 'black';
     }
 
-    if (db.mực_nước.hotpress < 40) {
+    // chaeck spec && cảnh báo mức nước
+    var soundAlarm = document.getElementById('myAudio');
+    var loa = document.getElementById('loa');
+
+    if (db.mực_nước.hotpress < 50) {
         document.getElementById('hotpress_level').style.backgroundColor = '#ff0000';
     }
 
-    if (db.mực_nước.hotpress > 40) {
+    if (db.mực_nước.hotpress > 50) {
         document.getElementById('hotpress_level').style.backgroundColor = 'black';
     }
 
-    if (db.mực_nước.wetline < 40) {
+    if (db.mực_nước.wetline < 50) {
         document.getElementById('wetline_level').style.backgroundColor = '#ff0000';
     }
 
-    if (db.mực_nước.wetline > 40) {
+    if (db.mực_nước.wetline > 50) {
         document.getElementById('wetline_level').style.backgroundColor = 'black';
+    }
+
+    if (db.mực_nước.hotpress < 50 || db.mực_nước.wetline < 50) {
+        soundAlarm.play();
+        loa.src = 'img/ALARM.png';
+        loa.style.cursor = 'pointer';
+
+        $('#loa').click(function () {
+            loa.style.opacity = '0';
+            soundAlarm.muted = true;
+        });
+
+        if (loa.style.opacity === '0') {
+            $('#loa').click(function () {
+                loa.style.opacity = '1';
+                soundAlarm.muted = false;
+            });
+        }
+    } else {
+        soundAlarm.pause();
+        loa.src = 'img/onvolumn.png';
+        loa.style.cursor = 'pointer';
+
+        $('#loa').click(function () {
+            loa.style.opacity = '0';
+            soundAlarm.muted = true;
+        });
+
+        if (loa.style.opacity === '0') {
+            $('#loa').click(function () {
+                loa.style.opacity = '1';
+                soundAlarm.muted = false;
+            });
+        }
     }
 
     // // add css
@@ -529,8 +567,8 @@ function rd() {
             .getElementById('left-wapper')
             .getSVGDocument()
             .getElementById('chiller4_comp1_fan6').style.animation = '';
-        
-            document
+
+        document
             .getElementById('left-wapper')
             .getSVGDocument()
             .getElementById('chiller4_comp1_fan1').style.fill = '#ffffff';
@@ -1772,7 +1810,7 @@ function rd() {
             .getSVGDocument()
             .getElementById('chiller7_comp2_fan4').style.animation = '';
 
-            document
+        document
             .getElementById('left-wapper')
             .getSVGDocument()
             .getElementById('chiller7_comp2_fan3').style.fill = '#ffffff';

@@ -42,21 +42,25 @@ body {
     font-size: 70px;
 }
 
-/* #loa {
+#loa {
     position: absolute;
-    left: 380px;
-    width: 35px;
-    height: 35px;
+    left: 800px;
+    top: 17px;
+    width: 80px;
+    height: 80px;
     scale: 100%;
+    margin-top: 0px
 }
 
 #loa1 {
     position: absolute;
-    left: 380px;
-    width: 35px;
-    height: 35px;
+    left: 800px;
+    top: 17px;
+    width: 80px;
+    height: 80px;
     scale: 100%;
-} */
+    margin-top: 0px
+}
 
 .NameProject {
     display: flex;
