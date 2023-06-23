@@ -93,6 +93,22 @@ function rd() {
         document.getElementById('wetline_temp').style.backgroundColor = 'black';
     }
 
+    if (db.mực_nước.hotpress < 40) {
+        document.getElementById('hotpress_level').style.backgroundColor = '#ff0000';
+    }
+
+    if (db.mực_nước.hotpress > 40) {
+        document.getElementById('hotpress_level').style.backgroundColor = 'black';
+    }
+
+    if (db.mực_nước.wetline < 40) {
+        document.getElementById('wetline_level').style.backgroundColor = '#ff0000';
+    }
+
+    if (db.mực_nước.wetline > 40) {
+        document.getElementById('wetline_level').style.backgroundColor = 'black';
+    }
+
     // // add css
     // document
     //     .getElementById('left-wapper')
